@@ -1,0 +1,95 @@
+{
+  "ready": true,
+  "version": "2026-10-06",
+  "source": "2026-10-06-MutualNDA_GoWarm.pdf",
+  "title": "Mutual Nondisclosure Agreement",
+  "ourParty": {
+    "name": "DeepConnect Technologies Inc.",
+    "signerName": "Sudheer Gentela",
+    "signerTitle": "President"
+  },
+  "intro": "This Mutual Nondisclosure Agreement (this “Agreement”), effective {{EFFECTIVE_DATE}}, (“Effective Date”), is entered into by and between {{COUNTERPARTY}}, located at {{COUNTERPARTY_ADDRESS}}, (hereinafter referred to as “Company”), and DeepConnect Technologies Inc., an Individual / corporation and associated companies/affiliates, with registered address at 8 The Green STE A, Dover,Kent, DE - 19901(herein after referred to as “Business”). Hereinafter, Company and Business shall collectively be referred to as the “Parties”). In consideration of the covenants and conditions contained herein, the Parties hereby agree to the following:",
+  "sections": [
+    {
+      "number": "1",
+      "heading": "PURPOSE",
+      "paragraphs": [
+        "Either Party may be referred to as the \"Disclosing Party\" and/or the \"Recipient\", depending solely upon that Party's role in the disclosure and/or receiving of information to or from the other Party, of which the Parties' roles shall be expected to vary, as detailed below (This Agreement), which that Party which discloses such information shall deem as \"confidential\" shall be known hereinafter as the \"Disclosing Party\" and the Party which receives such information from the other Party shall hereinafter be known as the \"Recipient\"."
+      ]
+    },
+    {
+      "number": "2",
+      "heading": "CONFIDENTIAL INFORMATION",
+      "paragraphs": [
+        "(a) Definition. “Confidential Information” means (a) any information disclosed (directly or indirectly) by Discloser to Recipient pursuant to this Agreement that is in written, graphic, machine readable or other tangible form objects (including, without limitation, documents, software, prototypes, samples, data sets, and plant and equipment) and is marked “Confidential,” “Proprietary” or in some other manner to indicate its confidential nature; (b) oral information disclosed (directly or indirectly) by Discloser to Recipient pursuant to this Agreement, provided that such information is designated as confidential at the time of disclosure and reduced to a written summary by Discloser that is marked in a manner to indicate its confidential nature and delivered to Recipient within thirty (30) days after its oral disclosure; and (c) information otherwise reasonably expected to be treated in a confidential manner under the circumstances of disclosure under this Agreement or by the nature of the information itself. Confidential Information may include information of a third party that is in the possession of Discloser and is disclosed to Recipient under this Agreement.",
+        "(b) Exceptions. Confidential Information shall not, however, include any information that (i) was publicly known or made generally available without a duty of confidentiality prior to the time of disclosure by Discloser to Recipient; (ii) becomes publicly known or made generally available without a duty of confidentiality after disclosure by Discloser to Recipient through no wrongful action or inaction of Recipient; (iii) is in the rightful possession of Recipient without confidentiality obligations at the time of disclosure by Discloser to Recipient as shown by Recipient’s then-contemporaneous written files and records kept in the ordinary course of business; (iv) is obtained by Recipient from a third party without an accompanying duty of confidentiality without a breach of such third party’s obligations of confidentiality; or (v) is independently developed by Recipient without use of or reference to Discloser’s Confidential Information, as shown by written records and other competent evidence prepared contemporaneously with such independent development.",
+        "(c) Compelled Disclosure. If Recipient becomes legally compelled to disclose any Confidential Information, other than pursuant to a confidentiality agreement, Recipient will provide Discloser prompt written notice, if legally permissible, and will use commercially reasonable efforts to assist Discloser in seeking a protective order or another appropriate remedy. If Discloser waives Recipient’s compliance with this Agreement or fails to obtain a protective order or other appropriate remedy, Recipient will furnish only that portion of the Confidential Information that is legally required to be disclosed, provided that any Confidential Information so disclosed shall maintain its confidentiality protection for all purposes other than such legally compelled disclosure."
+      ]
+    },
+    {
+      "number": "3",
+      "heading": "NONUSE AND NONDISCLOSURE",
+      "paragraphs": [
+        "Recipient shall not use any Confidential Information of Discloser for any purpose except to evaluate and engage in discussions concerning the Opportunity. Recipient shall not disclose any Confidential Information of Discloser to third parties or to Recipient’s employees, except that, subject to Section 4 below, Recipient may disclose Discloser’s Confidential Information to those employees of Recipient who are required to have the information in order to evaluate or engage in discussions concerning the Opportunity. Recipient shall not reverse engineer, disassemble, or decompile any prototypes, software, samples, or other tangible objects that embody Discloser’s Confidential Information and that are provided to Recipient under this Agreement."
+      ]
+    },
+    {
+      "number": "4",
+      "heading": "MAINTENANCE OF CONFIDENTIALITY",
+      "paragraphs": [
+        "Recipient shall take reasonable measures to protect the secrecy of and avoid disclosure and unauthorized use of the Confidential Information of Discloser. Without limiting the foregoing, Recipient shall take at least those measures that it employs to protect its own confidential information of a similar nature and shall ensure that its employees who have access to Confidential Information of Discloser have signed a nonuse and nondisclosure agreement in content at least as protective of Discloser’s Confidential Information as the provisions of this Agreement, prior to any disclosure of Confidential Information to such employees. The Recipient shall not make any copies of the Confidential Information of Discloser unless the same are previously approved in writing by Discloser. The Recipient shall reproduce Discloser’s proprietary rights notices on any such authorized copies in the same manner in which such notices were set forth in or on the original. The Recipient shall promptly notify Discloser of any unauthorized use or disclosure, or suspected unauthorized use or disclosure, of Discloser’s Confidential Information of which Recipient becomes aware."
+      ]
+    },
+    {
+      "number": "5",
+      "heading": "NO OBLIGATION",
+      "paragraphs": [
+        "Nothing in this Agreement shall obligate either Party to proceed with any transaction between them, and each Party reserves the right, in its sole discretion, to terminate the discussions contemplated by this Agreement concerning the Opportunity. Nothing in this Agreement shall be construed to restrict either Party’s use or disclosure of its own Confidential Information."
+      ]
+    },
+    {
+      "number": "6",
+      "heading": "NO WARRANTY",
+      "paragraphs": [
+        "ALL CONFIDENTIAL INFORMATION IS PROVIDED “AS IS.” NEITHER PARTY MAKES ANY WARRANTIES, EXPRESS, IMPLIED OR OTHERWISE, REGARDING THE ACCURACY, COMPLETENESS OR PERFORMANCE OF ANY CONFIDENTIAL INFORMATION, OR WITH RESPECT TO NON-INFRINGEMENT OR OTHER VIOLATION OF ANY INTELLECTUAL PROPERTY RIGHTS OF A THIRD PARTY OR OF RECIPIENT. In the event that the Parties enter into a definitive agreement, any representation or warranty contained in such definitive agreement regarding the Confidential Information will supersede this Section 6."
+      ]
+    },
+    {
+      "number": "7",
+      "heading": "RETURN OF MATERIALS",
+      "paragraphs": [
+        "All documents and other tangible objects containing or representing Confidential Information that have been disclosed by Discloser to Recipient, and all copies or extracts thereof or notes derived therefrom that are in the possession of Recipient, shall be and remain the property of Discloser and shall be promptly returned to Discloser or destroyed (with proof of such destruction), each upon Discloser’s written request. Notwithstanding the foregoing, Recipient may retain Confidential Information and all copies or extracts thereof or notes derived therefrom, to the extent required by (a) applicable laws, regulations, or professional obligations or (b) Recipient’s normal archiving and backing up procedures. Any such Confidential Information retained shall remain subject to this Agreement"
+      ]
+    },
+    {
+      "number": "8",
+      "heading": "NO LICENSE",
+      "paragraphs": [
+        "Nothing in this Agreement is intended to grant any rights to Recipient under any patent, mask work right or copyright of Discloser, nor shall this Agreement grant Recipient any rights in or to the Confidential Information of Discloser except as expressly set forth in this Agreement."
+      ]
+    },
+    {
+      "number": "9",
+      "heading": "REMEDIES",
+      "paragraphs": [
+        "Recipient agrees that any violation or threatened violation of this Agreement may cause irreparable injury to Discloser, entitling Discloser to seek injunctive relief in addition to all legal remedies."
+      ]
+    },
+    {
+      "number": "10",
+      "heading": "MISCELLANEOUS",
+      "paragraphs": [
+        "This Agreement shall bind and inure to the benefit of the Parties and their respective successors and permitted assigns. Neither Party may assign or otherwise transfer this Agreement without the prior written consent of the other Party, except that either Party may assign this Agreement without consent in connection with a merger, reorganization, consolidation, or sale of all or substantially all of the assets to which this Agreement pertains. Any assignment or transfer of this Agreement in violation of the foregoing shall be null and void. This Agreement will be interpreted and construed in accordance with the laws of the State of Delaware, without regard to conflict of law principles. Each Party hereby represents and warrants that the persons executing this Agreement on its behalf have express authority to do so, and, in so doing, to bind such Party thereto. This Agreement contains the entire agreement between the Parties with respect to the Opportunity and supersedes all prior written and oral agreements between the Parties regarding the Opportunity. Recipient shall not have any obligation, express or implied by law, with respect to trade secret or proprietary information of Discloser disclosed under this Agreement except as set forth herein. If a court or other body of competent jurisdiction finds, or the Parties mutually believe, any provision of this Agreement, or portion thereof, to be invalid or unenforceable, such provision will be enforced to the maximum extent permissible so as to effect the intent of the Parties, and the remainder of this Agreement will continue in full force and effect. No provision of this Agreement may be waived except by a writing executed by the Party against whom the waiver is to be effective. A Party’s failure to enforce any provision of this Agreement shall neither be construed as a waiver of the provision nor prevent the Party from enforcing any other provision of this Agreement. No provision of this Agreement may be amended or otherwise modified except by a writing signed by the Parties to this Agreement. The Parties may execute this Agreement in counterparts, each of which is deemed an original, but all of which together constitute one and the same agreement. This Agreement may be delivered by facsimile transmission, and facsimile copies of executed signature pages shall be binding as originals."
+      ]
+    },
+    {
+      "number": "11",
+      "heading": "TERM & DISPUTES",
+      "paragraphs": [
+        "The obligations of Recipient hereunder shall terminate 1 year after the Effective Date.",
+        "All disputes arising out of this Agreement will be subject to the exclusive jurisdiction and venue of the state courts located in Kent County, DE and the federal courts located in Kent, DE, and each Party hereby consents to the personal jurisdiction thereof."
+      ]
+    }
+  ],
+  "closing": "IN WITNESS WHEREOF, the Parties by their duly authorized representatives have executed this Agreement as of the Effective Date."
+}

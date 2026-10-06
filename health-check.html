@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RevOps Health Check | Sudheer Gentela</title>
+<meta name="description" content="Eight questions, two minutes. See how healthy your revenue engine is and where to look first.">
+<meta property="og:title" content="RevOps Health Check">
+<meta property="og:description" content="Eight questions, two minutes. See where your revenue engine needs work.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect x='2' y='2' width='24' height='24' rx='4' fill='%230F1B2D'/%3E%3Cpath d='M7 19l5-5 4 3 5-7' fill='none' stroke='%23FDBA74' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root{--accent:#C2410C}
+body{margin:0;background:#F7F8F9}
+*{box-sizing:border-box}
+a{color:#0F1B2D}a:hover{color:#9A3412}
+[hidden]{display:none !important}
+.hc-item{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid #DDE2E8;border-radius:8px;background:#FFFFFF;cursor:pointer;min-height:44px}
+.hc-item:has(input:checked){border-color:#0F1B2D;background:#F1F4F8}
+.hc-item input{width:20px;height:20px;margin:3px 0 0;flex:0 0 auto;accent-color:var(--accent)}
+@media (min-width: 900px){.hc-result{position:sticky;top:96px}}
+@media (max-width: 860px){.nav-links{display:none !important}}
+</style>
+</head>
+<body>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0F1B2D; background: #F7F8F9; font-size: 17px; line-height: 1.6; min-width: 0">
+
+<header style="position: sticky; top: 0; z-index: 10; background: rgba(247,248,249,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid #DDE2E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px">
+<a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #0F1B2D">
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#0F1B2D" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="4"></rect><path d="M7 19l5-5 4 3 5-7"></path></svg>
+<span style="display: flex; flex-direction: column; line-height: 1.15">
+<span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 18px">Sudheer Gentela</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: #4A5568">FRACTIONAL REVOPS</span>
+</span>
+</a>
+<nav aria-label="Main" class="nav-links" style="display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 15px; font-weight: 500">
+<a href="index.html#fit" style="text-decoration: none">Who it’s for</a>
+<a href="index.html#services" style="text-decoration: none">Services</a>
+<a href="index.html#how" style="text-decoration: none">How it works</a>
+<a href="index.html#projects" style="text-decoration: none">Projects</a>
+<a href="index.html#engagements" style="text-decoration: none">Engagements</a>
+<a href="index.html#about" style="text-decoration: none">About</a>
+<a href="health-check.html" aria-current="page" style="text-decoration: none; color: var(--accent)">RevOps Health Check</a>
+</nav>
+<a href="index.html#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px; border-radius: 6px">Book a call</a>
+</div>
+</header>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 80px 20px 96px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">REVOPS HEALTH CHECK</div>
+<h1 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 16px; max-width: 860px">How healthy is your revenue engine?</h1>
+<p style="font-size: 20px; color: #3A4556; margin: 0 0 48px; max-width: 680px">Tick every statement that’s true for your company today. Eight questions, two minutes, and nothing you enter leaves this page.</p>
+
+<div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
+<form id="hc-form" style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 32px">
+
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 12px; padding: 0">PIPELINE AND FORECASTING</legend>
+<label class="hc-item"><input type="checkbox" class="hc" data-gap="Forecast reliability"><span>Our forecast lands within a predictable range most quarters.</span></label>
+<label class="hc-item"><input type="checkbox" class="hc" data-gap="Stage definitions and exit criteria"><span>Every deal stage has written entry and exit criteria.</span></label>
+</fieldset>
+
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 12px; padding: 0">LEAD FLOW</legend>
+<label class="hc-item"><input type="checkbox" class="hc" data-gap="Lead routing and response SLAs"><span>New leads get an owner automatically, with a response SLA.</span></label>
+<label class="hc-item"><input type="checkbox" class="hc" data-gap="One shared definition of pipeline"><span>Marketing, sales and delivery agree on one definition of pipeline.</span></label>
+</fieldset>
+
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 12px; padding: 0">SYSTEMS AND DATA</legend>
+<label class="hc-item"><input type="checkbox" class="hc" data-gap="Reporting from the CRM, not spreadsheets"><span>Leadership dashboards come straight from the CRM, not spreadsheets.</span></label>
+<label class="hc-item"><input type="checkbox" class="hc" data-gap="Connected systems and one account record"><span>Our CRM, billing and delivery tools share one record for each account.</span></label>
+</fieldset>
+
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 12px; padding: 0">HANDOFFS AND PLANNING</legend>
+<label class="hc-item"><input type="checkbox" class="hc" data-gap="Sale-to-delivery handoff"><span>The handoff from closed deal to delivery or onboarding follows a defined process.</span></label>
+<label class="hc-item"><input type="checkbox" class="hc" data-gap="Capacity-based quotas and plans"><span>Quotas and plans are set from capacity and historical data.</span></label>
+</fieldset>
+
+</form>
+
+<aside class="hc-result" aria-live="polite" style="flex: 1 1 340px; min-width: 0; background: #0F1B2D; color: #E8EDF3; border-radius: 10px; padding: 32px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #A9B4C2; margin-bottom: 10px">YOUR SCORE</div>
+<div style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 64px; line-height: 1; color: #FFFFFF; margin-bottom: 18px"><span id="hc-score">0</span><span style="font-size: 28px; color: #A9B4C2"> / 8</span></div>
+<div style="height: 8px; background: #24344A; border-radius: 999px; overflow: hidden; margin-bottom: 24px">
+<div id="hc-bar" style="height: 8px; background: #FDBA74; border-radius: 999px; width: 0%; transition: width 0.2s"></div>
+</div>
+<div id="hc-title" style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 22px; color: #FFFFFF; margin-bottom: 8px">Foundations first</div>
+<p id="hc-text" style="margin: 0 0 24px; color: #A9B4C2; font-size: 16px"></p>
+<div id="hc-gaps-wrap">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #A9B4C2; margin-bottom: 10px">WHERE TO LOOK FIRST</div>
+<ul id="hc-gaps" style="margin: 0 0 28px; padding-left: 20px; color: #E8EDF3; font-size: 15px; display: flex; flex-direction: column; gap: 4px"></ul>
+</div>
+<a href="index.html#contact" style="display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; background: #FFFFFF; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 6px; margin-bottom: 12px">Walk through your results on a call</a>
+<button type="button" id="hc-reset" style="width: 100%; min-height: 44px; background: transparent; color: #E8EDF3; border: 1px solid #3A4D66; border-radius: 6px; font: inherit; font-size: 15px; cursor: pointer">Start over</button>
+</aside>
+</div>
+</main>
+
+<footer style="background: #0B1522; color: #A9B4C2; font-size: 14px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px">
+<span>Sudheer Gentela · Fractional RevOps for SaaS, Services and IT companies</span>
+<span><a href="index.html" style="color: #E8EDF3">Home</a> · © 2026</span>
+</div>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  // Scoring runs entirely in the browser; nothing is stored or sent anywhere.
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.hc'));
+  var scoreEl = document.getElementById('hc-score');
+  var barEl = document.getElementById('hc-bar');
+  var titleEl = document.getElementById('hc-title');
+  var textEl = document.getElementById('hc-text');
+  var gapsEl = document.getElementById('hc-gaps');
+  var gapsWrap = document.getElementById('hc-gaps-wrap');
+  var bands = [
+    { max: 3, title: 'Foundations first', text: 'Your revenue data and process need groundwork before more tools or headcount will pay off. A diagnostic shows where to start.' },
+    { max: 6, title: 'Gaps are slowing growth', text: 'The basics exist, but a few broken handoffs or fuzzy definitions are costing you pipeline and forecast confidence.' },
+    { max: 8, title: 'Ready to optimize', text: 'Strong foundations. The upside now is sharper forecasting, capacity planning and expansion revenue.' }
+  ];
+
+  function update() {
+    var score = boxes.filter(function (b) { return b.checked; }).length;
+    var band = bands.filter(function (b) { return score <= b.max; })[0];
+    scoreEl.textContent = score;
+    barEl.style.width = Math.round(score / boxes.length * 100) + '%';
+    titleEl.textContent = band.title;
+    textEl.textContent = band.text;
+
+    // Unticked statements become the "where to look first" list, in question order.
+    gapsEl.textContent = '';
+    boxes.filter(function (b) { return !b.checked; }).forEach(function (b) {
+      var li = document.createElement('li');
+      li.textContent = b.getAttribute('data-gap');
+      gapsEl.appendChild(li);
+    });
+    gapsWrap.hidden = score === boxes.length;
+  }
+
+  boxes.forEach(function (b) { b.addEventListener('change', update); });
+  document.getElementById('hc-reset').addEventListener('click', function () {
+    boxes.forEach(function (b) { b.checked = false; });
+    update();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  update();
+})();
+</script>
+</body>
+</html>

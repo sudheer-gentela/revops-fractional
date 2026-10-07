@@ -21,21 +21,6 @@ input,select,textarea,button{font:inherit}
 @media (max-width: 860px){.nav-links{display:none !important}}
 /* Anchor jumps land below the sticky header instead of under it. */
 [id]{scroll-margin-top:88px}
-/* Header "Services" dropdown: opens on hover or on click/tap/Enter (JS sets .open). */
-.nav-dd{position:relative}
-.nav-dd-btn{display:inline-flex;align-items:center;gap:5px;min-height:44px;padding:0;background:none;border:0;font:inherit;font-weight:500;color:#0F1B2D;cursor:pointer}
-.nav-dd-btn:hover{color:#9A3412}
-.nav-dd-btn svg{transition:transform 0.15s}
-.nav-dd-menu{display:none;position:absolute;top:100%;left:-14px;padding-top:6px;z-index:20}
-.nav-dd:hover .nav-dd-menu,.nav-dd.open .nav-dd-menu{display:block}
-.nav-dd:hover .nav-dd-btn svg,.nav-dd.open .nav-dd-btn svg{transform:rotate(180deg)}
-/* Set after choosing a link or pressing Escape, so the menu closes even with the pointer still over it. */
-.nav-dd.closing .nav-dd-menu{display:none !important}
-.nav-dd.closing .nav-dd-btn svg{transform:none !important}
-.nav-dd-panel{min-width:290px;padding:8px;background:#FFFFFF;border:1px solid #DDE2E8;border-radius:10px;box-shadow:0 12px 32px rgba(15,27,45,0.14)}
-.nav-dd-panel a{display:block;padding:10px 12px;border-radius:6px;text-decoration:none;color:#0F1B2D;font-weight:600;line-height:1.35}
-.nav-dd-panel a:hover,.nav-dd-panel a:focus{background:#F1F4F8;color:#0F1B2D}
-.nav-dd-panel small{display:block;margin-top:2px;font-size:13px;font-weight:400;color:#4A5568}
 .field{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
 .field input,.field textarea{min-height:46px;padding:10px 12px;border:1px solid #C5CDD8;border-radius:6px;font-weight:400;background:#FFFFFF;color:#0F1B2D}
 .field textarea{resize:vertical}
@@ -64,18 +49,9 @@ input,select,textarea,button{font:inherit}
 <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: #4A5568">FRACTIONAL REVOPS</span>
 </span>
 </a>
-<nav aria-label="Main" class="nav-links" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 24px; font-size: 15px; font-weight: 500">
+<nav aria-label="Main" class="nav-links" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 26px; font-size: 15px; font-weight: 500">
 <a href="index.html#fit" style="text-decoration: none">Who it’s for</a>
-<div class="nav-dd">
-<button type="button" class="nav-dd-btn" aria-expanded="false" aria-controls="nav-services">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"></path></svg></button>
-<div class="nav-dd-menu" id="nav-services">
-<div class="nav-dd-panel">
-<a href="index.html#services">What I take ownership of<small>Six RevOps areas to choose from</small></a>
-<a href="index.html#engagements">Engagements<small>Diagnostic, Build and Run</small></a>
-<a href="index.html#projects">Project work<small>One specific project, fixed scope</small></a>
-</div>
-</div>
-</div>
+<a href="index.html#services" style="text-decoration: none">Services</a>
 <a href="index.html#how" style="text-decoration: none">How it works</a>
 <a href="index.html#about" style="text-decoration: none">About</a>
 <a href="health-check.html" style="text-decoration: none; color: var(--accent)">RevOps Health Check</a>
@@ -164,9 +140,16 @@ input,select,textarea,button{font:inherit}
 </main>
 
 <footer style="background: #0B1522; color: #A9B4C2; font-size: 14px">
-<div style="max-width: 1200px; margin: 0 auto; padding: 28px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 32px">
 <span>Sudheer Gentela · Fractional RevOps for SaaS, Services and IT companies</span>
-<span><a href="index.html" style="color: #E8EDF3">Home</a> · © 2026</span>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 8px 20px">
+<a href="engagements.html" style="color: #E8EDF3">Engagements</a>
+<a href="projects.html" style="color: #E8EDF3">Projects</a>
+<a href="what-i-bring.html" style="color: #E8EDF3">What I bring</a>
+<a href="health-check.html" style="color: #E8EDF3">RevOps Health Check</a>
+<a href="nda.html" style="color: #E8EDF3">Mutual NDA</a>
+<span>© 2026</span>
+</nav>
 </div>
 </footer>
 
@@ -345,46 +328,6 @@ input,select,textarea,button{font:inherit}
       });
     };
     reader.readAsDataURL(file);
-  });
-})();
-</script>
-<script>
-(function () {
-  // Header "Services" dropdown. Hover is handled in CSS; this covers click, tap and
-  // keyboard (the button responds to Enter/Space), and closing on Escape, click-away,
-  // choosing a link, or tabbing out.
-  var dd = document.querySelector('.nav-dd');
-  if (!dd) return;
-  var btn = dd.querySelector('.nav-dd-btn');
-
-  function setOpen(open) {
-    dd.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-  // Hover alone would keep the menu showing after it should close, so suppress it
-  // until the pointer leaves.
-  function forceClose() {
-    setOpen(false);
-    dd.classList.add('closing');
-  }
-
-  btn.addEventListener('click', function () {
-    dd.classList.remove('closing');
-    setOpen(!dd.classList.contains('open'));
-  });
-  dd.addEventListener('mouseleave', function () { dd.classList.remove('closing'); });
-  dd.addEventListener('focusout', function (e) {
-    if (!dd.contains(e.relatedTarget)) setOpen(false);
-  });
-  document.addEventListener('click', function (e) { if (!dd.contains(e.target)) setOpen(false); });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && (dd.classList.contains('open') || dd.matches(':hover'))) {
-      forceClose();
-      btn.focus();
-    }
-  });
-  Array.prototype.forEach.call(dd.querySelectorAll('a'), function (a) {
-    a.addEventListener('click', function () { forceClose(); a.blur(); });
   });
 })();
 </script>

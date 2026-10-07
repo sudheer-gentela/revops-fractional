@@ -5,6 +5,9 @@ Static site on Vercel with two serverless functions.
 ```
 index.html          Homepage
 health-check.html   RevOps Health Check (served at /health-check)
+engagements.html    Ongoing engagements: Diagnose, Build, Run (served at /engagements)
+projects.html       Project work: project types and how a project runs (served at /projects)
+what-i-bring.html   What I bring: the six things clients keep (served at /what-i-bring)
 nda.html            Mutual NDA: sign online or upload your own (served at /nda)
 nda-text.json       The NDA wording, used by both the page and the signed PDF
 api/submit.js       Contact form → emails you, sends the visitor a confirmation, optional Google Sheets log

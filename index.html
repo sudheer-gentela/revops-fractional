@@ -26,27 +26,25 @@ input,select,textarea{font:inherit}
 @media (max-width: 860px){.nav-links{display:none !important}}
 /* Anchor jumps land below the sticky header instead of under it. */
 [id]{scroll-margin-top:88px}
-/* Header "Services" dropdown: opens on hover or on click/tap/Enter (JS sets .open). */
-.nav-dd{position:relative}
-.nav-dd-btn{display:inline-flex;align-items:center;gap:5px;min-height:44px;padding:0;background:none;border:0;font:inherit;font-weight:500;color:#0F1B2D;cursor:pointer}
-.nav-dd-btn:hover{color:#9A3412}
-.nav-dd-btn svg{transition:transform 0.15s}
-.nav-dd-menu{display:none;position:absolute;top:100%;left:-14px;padding-top:6px;z-index:20}
-.nav-dd:hover .nav-dd-menu,.nav-dd.open .nav-dd-menu{display:block}
-.nav-dd:hover .nav-dd-btn svg,.nav-dd.open .nav-dd-btn svg{transform:rotate(180deg)}
-/* Set after choosing a link or pressing Escape, so the menu closes even with the pointer still over it. */
-.nav-dd.closing .nav-dd-menu{display:none !important}
-.nav-dd.closing .nav-dd-btn svg{transform:none !important}
-.nav-dd-panel{min-width:290px;padding:8px;background:#FFFFFF;border:1px solid #DDE2E8;border-radius:10px;box-shadow:0 12px 32px rgba(15,27,45,0.14)}
-.nav-dd-panel a{display:block;padding:10px 12px;border-radius:6px;text-decoration:none;color:#0F1B2D;font-weight:600;line-height:1.35}
-.nav-dd-panel a:hover,.nav-dd-panel a:focus{background:#F1F4F8;color:#0F1B2D}
-.nav-dd-panel small{display:block;margin-top:2px;font-size:13px;font-weight:400;color:#4A5568}
-/* Services menu: each topic is a real checkbox so it works with keyboard and screen readers. */
-.svc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
-.svc-num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#FDBA74;margin-bottom:8px}
-.svc-title{font-family:Archivo,sans-serif;font-size:22px;line-height:1.2;margin:0;color:#FFFFFF}
-.svc-all{flex:0 0 auto;min-height:44px;padding:0 14px;background:transparent;color:#E8EDF3;border:1px solid #3A4D66;border-radius:6px;font:inherit;font-size:13px;cursor:pointer}
+/* Services: six areas as an accordion; topics are real checkboxes so they work with keyboard and screen readers. */
+.svc-list{border:1px solid #24344A;border-radius:10px;overflow:hidden}
+.svc + .svc{border-top:1px solid #24344A}
+.svc-sum{display:flex;align-items:center;gap:20px;padding:20px 24px;min-height:44px}
+.svc-sum:hover,.svc[open] .svc-sum{background:#13233A}
+.svc-sum:focus-visible{outline:2px solid #FDBA74;outline-offset:-2px}
+.svc-num{flex:0 0 28px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#FDBA74}
+.svc-main{flex:1 1 auto;min-width:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 18px}
+.svc-title{font-family:Archivo,sans-serif;font-size:21px;font-weight:700;line-height:1.25;color:#FFFFFF}
+.svc-line{color:#A9B4C2;font-size:16px}
+.svc-count{flex:0 0 auto;padding:3px 10px;border-radius:999px;background:#FDBA74;color:#0F1B2D;font-size:12px;font-weight:600;white-space:nowrap}
+.svc-chev{flex:0 0 auto;color:#A9B4C2;transition:transform 0.15s}
+.svc[open] .svc-chev{transform:rotate(180deg)}
+.svc-body{padding:4px 24px 24px 72px;background:#13233A}
+.svc-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 32px;margin-bottom:14px}
+@media (max-width: 720px){.svc-sum{gap:14px;padding:18px}.svc-body{padding:4px 18px 20px}.svc-topics{grid-template-columns:1fr}}
+.svc-all{min-height:44px;padding:0 14px;background:transparent;color:#E8EDF3;border:1px solid #3A4D66;border-radius:6px;font:inherit;font-size:13px;cursor:pointer}
 .svc-all:hover{border-color:#A9B4C2}
+.phase-pill{display:inline-flex;align-items:center;min-height:32px;padding:4px 12px;border:1px solid #C5CDD8;border-radius:999px;background:#FFFFFF;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#0F1B2D}
 .topic{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;margin:0 -12px;border-radius:6px;cursor:pointer;color:#C9D2DD;font-size:15.5px;line-height:1.45}
 .topic:hover{background:#16263B}
 .topic:has(input:checked){background:#1C2F48;color:#FFFFFF}
@@ -69,18 +67,9 @@ input,select,textarea{font:inherit}
 <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: #4A5568">FRACTIONAL REVOPS</span>
 </span>
 </a>
-<nav aria-label="Main" class="nav-links" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 24px; font-size: 15px; font-weight: 500">
+<nav aria-label="Main" class="nav-links" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 26px; font-size: 15px; font-weight: 500">
 <a href="#fit" style="text-decoration: none">Who it’s for</a>
-<div class="nav-dd">
-<button type="button" class="nav-dd-btn" aria-expanded="false" aria-controls="nav-services">Services <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4.5l3 3 3-3"></path></svg></button>
-<div class="nav-dd-menu" id="nav-services">
-<div class="nav-dd-panel">
-<a href="#services">What I take ownership of<small>Six RevOps areas to choose from</small></a>
-<a href="#engagements">Engagements<small>Diagnostic, Build and Run</small></a>
-<a href="#projects">Project work<small>One specific project, fixed scope</small></a>
-</div>
-</div>
-</div>
+<a href="#services" style="text-decoration: none">Services</a>
 <a href="#how" style="text-decoration: none">How it works</a>
 <a href="#about" style="text-decoration: none">About</a>
 <a href="health-check.html" style="text-decoration: none; color: var(--accent)">RevOps Health Check</a>
@@ -201,60 +190,83 @@ input,select,textarea{font:inherit}
 </section>
 
 <section id="services" style="background: #0F1B2D; color: #E8EDF3">
-<div style="max-width: 1200px; margin: 0 auto; padding: 96px 20px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 20px">
 <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: #FDBA74; font-weight: 500; margin-bottom: 14px">SERVICES</div>
 <h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 16px; color: #FFFFFF; max-width: 760px">What I take ownership of.</h2>
-<p style="font-size: 19px; color: #A9B4C2; margin: 0 0 48px; max-width: 720px">Six areas, scoped to your stage. Tick the topics you want to talk about and they’ll come through with your message.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 1px; background: #24344A; border: 1px solid #24344A; border-radius: 10px; overflow: hidden">
-
-<div class="svc" role="group" aria-labelledby="svc1" data-cat="Strategy and planning" style="flex: 1 1 380px; min-width: 0; background: #0F1B2D; padding: 28px">
-<div class="svc-head"><div><div class="svc-num">01</div><h3 id="svc1" class="svc-title">Strategy and planning</h3></div><button type="button" class="svc-all">Select all</button></div>
+<p style="font-size: 19px; color: #A9B4C2; margin: 0 0 40px; max-width: 720px">Six areas, scoped to your stage. Open any area to see what’s covered, and tick the topics you’d like to talk about.</p>
+<div class="svc-list">
+<details class="svc" data-cat="Strategy and planning">
+<summary class="svc-sum"><span class="svc-num">01</span><span class="svc-main"><span class="svc-title">Strategy and planning</span><span class="svc-line">Revenue plans, quotas, capacity and territories</span></span><span class="svc-count" hidden></span><svg class="svc-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7"></path></svg></summary>
+<div class="svc-body">
+<div class="svc-topics">
 <label class="topic"><input type="checkbox" class="topic-box"><span>Annual and quarterly revenue planning, done with Finance and the CRO</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Quota setting and sales capacity planning: how many reps you need, and how fast they ramp</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Territory and account segmentation by industry, size or region, and who owns which accounts</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Go-to-market design: which segments get field sales, inside sales or a self-serve motion</span></label>
 </div>
-
-<div class="svc" role="group" aria-labelledby="svc2" data-cat="Forecasting and pipeline management" style="flex: 1 1 380px; min-width: 0; background: #0F1B2D; padding: 28px">
-<div class="svc-head"><div><div class="svc-num">02</div><h3 id="svc2" class="svc-title">Forecasting and pipeline management</h3></div><button type="button" class="svc-all">Select all</button></div>
+<button type="button" class="svc-all">Select all</button>
+</div>
+</details>
+<details class="svc" data-cat="Forecasting and pipeline management">
+<summary class="svc-sum"><span class="svc-num">02</span><span class="svc-main"><span class="svc-title">Forecasting and pipeline management</span><span class="svc-line">A forecast and pipeline reviews leadership can trust</span></span><span class="svc-count" hidden></span><svg class="svc-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7"></path></svg></summary>
+<div class="svc-body">
+<div class="svc-topics">
 <label class="topic"><input type="checkbox" class="topic-box"><span>Forecast methodology and the weekly forecast call</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Pipeline reviews, stage definitions and exit criteria</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Deal desk: pricing approvals, discount governance and non-standard terms</span></label>
 </div>
-
-<div class="svc" role="group" aria-labelledby="svc3" data-cat="Process design" style="flex: 1 1 380px; min-width: 0; background: #0F1B2D; padding: 28px">
-<div class="svc-head"><div><div class="svc-num">03</div><h3 id="svc3" class="svc-title">Process design</h3></div><button type="button" class="svc-all">Select all</button></div>
+<button type="button" class="svc-all">Select all</button>
+</div>
+</details>
+<details class="svc" data-cat="Process design">
+<summary class="svc-sum"><span class="svc-num">03</span><span class="svc-main"><span class="svc-title">Process design</span><span class="svc-line">How leads become customers, without leaks between teams</span></span><span class="svc-count" hidden></span><svg class="svc-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7"></path></svg></summary>
+<div class="svc-body">
+<div class="svc-topics">
 <label class="topic"><input type="checkbox" class="topic-box"><span>Lead-to-cash flow: capture, routing, qualification, opportunity, quote, contract, booking and handoff to CS</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Lead routing and assignment rules, response SLAs and round-robin logic</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Lead scoring and the definitions of MQL and SQL</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Handoffs between SDR and AE, and between AE and CS or onboarding</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Renewal and expansion process with Customer Success</span></label>
 </div>
-
-<div class="svc" role="group" aria-labelledby="svc4" data-cat="Systems and tech stack" style="flex: 1 1 380px; min-width: 0; background: #0F1B2D; padding: 28px">
-<div class="svc-head"><div><div class="svc-num">04</div><h3 id="svc4" class="svc-title">Systems and tech stack</h3></div><button type="button" class="svc-all">Select all</button></div>
+<button type="button" class="svc-all">Select all</button>
+</div>
+</details>
+<details class="svc" data-cat="Systems and tech stack">
+<summary class="svc-sum"><span class="svc-num">04</span><span class="svc-main"><span class="svc-title">Systems and tech stack</span><span class="svc-line">Your CRM and the tools around it, working together</span></span><span class="svc-count" hidden></span><svg class="svc-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7"></path></svg></summary>
+<div class="svc-body">
+<div class="svc-topics">
 <label class="topic"><input type="checkbox" class="topic-box"><span>CRM ownership: schema, fields, page layouts, permissions and automations</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>The surrounding tools: marketing automation, sales engagement, CPQ, conversation intelligence, enrichment, forecasting and BI</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Integrations between those tools, tool evaluation and purchasing, and license management</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Setting up and governing AI agents that enrich records, route leads and draft outreach</span></label>
 </div>
-
-<div class="svc" role="group" aria-labelledby="svc5" data-cat="Data quality and governance" style="flex: 1 1 380px; min-width: 0; background: #0F1B2D; padding: 28px">
-<div class="svc-head"><div><div class="svc-num">05</div><h3 id="svc5" class="svc-title">Data quality and governance</h3></div><button type="button" class="svc-all">Select all</button></div>
+<button type="button" class="svc-all">Select all</button>
+</div>
+</details>
+<details class="svc" data-cat="Data quality and governance">
+<summary class="svc-sum"><span class="svc-num">05</span><span class="svc-main"><span class="svc-title">Data quality and governance</span><span class="svc-line">Clean data, and clear rules on which system wins</span></span><span class="svc-count" hidden></span><svg class="svc-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7"></path></svg></summary>
+<div class="svc-body">
+<div class="svc-topics">
 <label class="topic"><input type="checkbox" class="topic-box"><span>Deduplication, enrichment and field standards</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Account hierarchies and parent/child relationships</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Data decay control and system-of-record rules: which system wins when two disagree</span></label>
 </div>
-
-<div class="svc" role="group" aria-labelledby="svc6" data-cat="Reporting and analytics" style="flex: 1 1 380px; min-width: 0; background: #0F1B2D; padding: 28px">
-<div class="svc-head"><div><div class="svc-num">06</div><h3 id="svc6" class="svc-title">Reporting and analytics</h3></div><button type="button" class="svc-all">Select all</button></div>
+<button type="button" class="svc-all">Select all</button>
+</div>
+</details>
+<details class="svc" data-cat="Reporting and analytics">
+<summary class="svc-sum"><span class="svc-num">06</span><span class="svc-main"><span class="svc-title">Reporting and analytics</span><span class="svc-line">Dashboards and metrics everyone works from</span></span><span class="svc-count" hidden></span><svg class="svc-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7"></path></svg></summary>
+<div class="svc-body">
+<div class="svc-topics">
 <label class="topic"><input type="checkbox" class="topic-box"><span>Dashboards for leadership and for each team</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Core metrics: pipeline coverage, win rate, sales cycle length, average deal size, CAC, LTV, NRR/GRR, churn and payback period</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Funnel conversion analysis and marketing attribution</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Rep productivity and activity analysis</span></label>
 <label class="topic"><input type="checkbox" class="topic-box"><span>Board-level metrics, prepared with Finance</span></label>
 </div>
-
+<button type="button" class="svc-all">Select all</button>
+</div>
+</details>
 </div>
 <div style="margin-top: 24px; padding: 18px 20px 18px 24px; border: 1px solid #3A4D66; border-radius: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px">
 <span id="topic-count" aria-live="polite" style="font-weight: 600; color: #FFFFFF">No topics selected yet.</span>
@@ -266,43 +278,14 @@ input,select,textarea{font:inherit}
 </div>
 </section>
 
-<!-- Framed as what clients keep at the end, not a pre-built template pack. -->
-<section id="toolkit" style="max-width: 1200px; margin: 0 auto; padding: 96px 20px">
+<section id="toolkit" style="max-width: 1200px; margin: 0 auto; padding: 80px 20px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px; margin-bottom: 36px">
+<div style="flex: 1 1 560px; min-width: 0">
 <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">WHAT I BRING</div>
 <h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 16px; max-width: 820px">Operating know-how, not a generic template pack.</h2>
-<p style="font-size: 19px; color: #3A4556; margin: 0 0 48px; max-width: 720px">I bring a working knowledge of the frameworks and models that keep revenue teams running, learned in operating roles. Rather than hand you someone else’s templates, I build each one around how your business sells and delivers. Your team keeps all of it.</p>
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 16px">WHAT YOU KEEP</div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 56px">
-<div style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 28px">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 16px"><path d="M9 11l3 3 8-8"></path><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"></path></svg>
-<h3 style="font-family: Archivo, sans-serif; font-size: 21px; margin: 0 0 8px">RevOps scorecard</h3>
-<p style="margin: 0; color: #3A4556; font-size: 16px">A structured assessment of your data, process, systems and people, scored so you can track progress over time.</p>
+<p style="font-size: 19px; color: #3A4556; margin: 0; max-width: 720px">From a RevOps scorecard to forecast cadence and dashboards, each one built around how your business sells and delivers. Your team keeps all of it.</p>
 </div>
-<div style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 28px">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 16px"><path d="M3 4h18l-7 8v6l-4 2v-8z"></path></svg>
-<h3 style="font-family: Archivo, sans-serif; font-size: 21px; margin: 0 0 8px">Lead-to-CS funnel model</h3>
-<p style="margin: 0; color: #3A4556; font-size: 16px">Stage-by-stage conversion and velocity, from first lead through to customer success, set up for how your company sells.</p>
-</div>
-<div style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 28px">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 16px"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h10"></path></svg>
-<h3 style="font-family: Archivo, sans-serif; font-size: 21px; margin: 0 0 8px">Stage definitions and field standards</h3>
-<p style="margin: 0; color: #3A4556; font-size: 16px">Stages, exit criteria and field rules written down for your revenue model, so every team works the same way.</p>
-</div>
-<div style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 28px">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 16px"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M3 9h18"></path><path d="M8 2v4"></path><path d="M16 2v4"></path></svg>
-<h3 style="font-family: Archivo, sans-serif; font-size: 21px; margin: 0 0 8px">Forecast cadence</h3>
-<p style="margin: 0; color: #3A4556; font-size: 16px">Forecast categories, roll-ups and a meeting agenda your leadership can run every week.</p>
-</div>
-<div style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 28px">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 16px"><path d="M4 20V10"></path><path d="M10 20V4"></path><path d="M16 20v-7"></path><path d="M22 20H2"></path></svg>
-<h3 style="font-family: Archivo, sans-serif; font-size: 21px; margin: 0 0 8px">Dashboards</h3>
-<p style="margin: 0; color: #3A4556; font-size: 16px">Leadership, pipeline and rep-level dashboards, built in your CRM or BI tool.</p>
-</div>
-<div style="flex: 1 1 320px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 28px">
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 16px"><rect x="4" y="2" width="16" height="20" rx="2"></rect><path d="M8 6h8"></path><path d="M8 11h2"></path><path d="M14 11h2"></path><path d="M8 15h2"></path><path d="M14 15h2"></path></svg>
-<h3 style="font-family: Archivo, sans-serif; font-size: 21px; margin: 0 0 8px">Capacity and quota model</h3>
-<p style="margin: 0; color: #3A4556; font-size: 16px">Quotas, territories and plans tested against real capacity before you roll them out.</p>
-</div>
+<a href="what-i-bring.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #FFFFFF; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 6px; border: 1px solid #0F1B2D">See what you keep<span aria-hidden="true" style="margin-left: 8px">→</span></a>
 </div>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; padding: 28px; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px">
 <div style="flex: 0 1 280px; font-weight: 600; font-size: 16px; line-height: 1.4">Tool-agnostic. I work in the stack you already have.</div>
@@ -373,105 +356,34 @@ input,select,textarea{font:inherit}
 </section>
 
 <section id="how" style="background: #FFFFFF; border-top: 1px solid #DDE2E8; border-bottom: 1px solid #DDE2E8">
-<div style="max-width: 1200px; margin: 0 auto; padding: 96px 20px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 20px">
 <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">HOW IT WORKS</div>
-<h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 16px; max-width: 760px">Diagnose. Build. Run.</h2>
-<p style="font-size: 19px; color: #3A4556; margin: 0 0 48px; max-width: 720px">Ongoing engagements move through three phases. Each one stands on its own, so you can stop after any of them.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 20px">
-<div style="flex: 1 1 320px; min-width: 0; border-top: 3px solid #0F1B2D; padding-top: 24px">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px">
-<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 40px; line-height: 1">01</span>
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5568">STANDARD OR CUSTOM</span>
+<h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 16px; max-width: 760px">Two ways to work together.</h2>
+<p style="font-size: 19px; color: #3A4556; margin: 0 0 40px; max-width: 680px">Pick the one that fits where you are today.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; border: 2px solid #0F1B2D; border-radius: 12px; padding: 32px; background: #F7F8F9">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 10px">ONGOING · A FEW MONTHS</div>
+<h3 style="font-family: Archivo, sans-serif; font-size: 28px; line-height: 1.15; margin: 0 0 12px">Ongoing engagement</h3>
+<p style="margin: 0 0 24px; color: #3A4556">I act as your RevOps lead over a few months: diagnose what’s broken, fix the foundations, then run it with your team.</p>
+<div aria-label="Three phases" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 28px; flex: 1 1 auto; align-content: flex-start">
+<span class="phase-pill">01 Diagnose</span><span aria-hidden="true" style="color: #4A5568">→</span><span class="phase-pill">02 Build</span><span aria-hidden="true" style="color: #4A5568">→</span><span class="phase-pill">03 Run</span>
 </div>
-<h3 style="font-family: Archivo, sans-serif; font-size: 24px; margin: 0 0 10px">Diagnose</h3>
-<p style="margin: 0 0 14px; color: #3A4556">A CRM and data audit, a review of your funnel from first lead to customer success, and interviews across teams. Take the standard diagnostic, or a custom one focused on the area that worries you most.</p>
-<p style="margin: 0; font-size: 15px; font-weight: 600">You get: a prioritized 90-day roadmap.</p>
+<a href="engagements.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; border-radius: 6px; align-self: flex-start">How engagements work<span aria-hidden="true" style="margin-left: 8px">→</span></a>
 </div>
-<div style="flex: 1 1 320px; min-width: 0; border-top: 3px solid #0F1B2D; padding-top: 24px">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px">
-<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 40px; line-height: 1">02</span>
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5568">TYPICALLY 60–90 DAYS</span>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; border: 1px solid #DDE2E8; border-radius: 12px; padding: 33px; background: #F7F8F9">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 10px">ONE-OFF · FIXED SCOPE</div>
+<h3 style="font-family: Archivo, sans-serif; font-size: 28px; line-height: 1.15; margin: 0 0 12px">A specific project</h3>
+<p style="margin: 0 0 24px; color: #3A4556">One problem, a fixed scope and a clear handover. No retainer.</p>
+<div style="margin-bottom: 28px; flex: 1 1 auto">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 8px">FOR EXAMPLE</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span class="phase-pill">CRM migration</span><span class="phase-pill">Lead routing</span><span class="phase-pill">Forecast and dashboards</span><span class="phase-pill">Territory planning</span></div>
 </div>
-<h3 style="font-family: Archivo, sans-serif; font-size: 24px; margin: 0 0 10px">Build</h3>
-<p style="margin: 0 0 14px; color: #3A4556">Implement the priority fixes from the audit and funnel review: stages, definitions, routing, integrations and dashboards. Weekly working sessions, shipped in increments.</p>
-<p style="margin: 0; font-size: 15px; font-weight: 600">You get: a working revenue system and a team trained to run it.</p>
+<a href="projects.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; border-radius: 6px; align-self: flex-start">See project types<span aria-hidden="true" style="margin-left: 8px">→</span></a>
 </div>
-<div style="flex: 1 1 320px; min-width: 0; border-top: 3px solid #0F1B2D; padding-top: 24px">
-<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px">
-<span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 40px; line-height: 1">03</span>
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5568">ONGOING</span>
-</div>
-<h3 style="font-family: Archivo, sans-serif; font-size: 24px; margin: 0 0 10px">Run</h3>
-<p style="margin: 0 0 14px; color: #3A4556">I stay on as your RevOps lead: forecast cadence, pipeline reviews, quarterly planning, and tuning as you grow.</p>
-<p style="margin: 0; font-size: 15px; font-weight: 600">You get: a clean handover when you hire in-house.</p>
-</div>
-</div>
-<div style="margin-top: 48px; padding: 24px 28px; border-radius: 10px; background: #F1F4F8; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
-<span style="font-size: 18px; font-weight: 600">Only need one thing fixed? You don’t have to start with a diagnostic.</span>
-<a href="#projects" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; border-radius: 6px">See project work</a>
 </div>
 </div>
 </section>
 
-<section id="projects" style="max-width: 1200px; margin: 0 auto; padding: 96px 20px">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">PROJECT WORK</div>
-<h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 16px; max-width: 820px">Hire me for one specific project.</h2>
-<p style="font-size: 19px; color: #3A4556; margin: 0 0 48px; max-width: 720px">A fixed scope, a fixed fee and a clear handover. No retainer required. Some of the projects teams bring me in for:</p>
-<div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 56px">
-<div style="flex: 1 1 260px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 24px">
-<h3 style="font-family: Archivo, sans-serif; font-size: 19px; margin: 0 0 8px">CRM implementation or migration</h3>
-<p style="margin: 0; color: #3A4556; font-size: 15px">Set up a new CRM, or move off spreadsheets or another CRM, with data migrated and cleaned.</p>
-</div>
-<div style="flex: 1 1 260px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 24px">
-<h3 style="font-family: Archivo, sans-serif; font-size: 19px; margin: 0 0 8px">CRM cleanup</h3>
-<p style="margin: 0; color: #3A4556; font-size: 15px">Merge duplicates, fix fields and ownership, and archive dead data so the CRM is usable again.</p>
-</div>
-<div style="flex: 1 1 260px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 24px">
-<h3 style="font-family: Archivo, sans-serif; font-size: 19px; margin: 0 0 8px">Lead routing and SLAs</h3>
-<p style="margin: 0; color: #3A4556; font-size: 15px">Assignment rules, round-robin, response SLAs and alerts, so no lead waits for an owner.</p>
-</div>
-<div style="flex: 1 1 260px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 24px">
-<h3 style="font-family: Archivo, sans-serif; font-size: 19px; margin: 0 0 8px">Forecast and dashboards</h3>
-<p style="margin: 0; color: #3A4556; font-size: 15px">A forecast model and leadership dashboards built straight from your CRM.</p>
-</div>
-<div style="flex: 1 1 260px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 24px">
-<h3 style="font-family: Archivo, sans-serif; font-size: 19px; margin: 0 0 8px">Sales process and stages</h3>
-<p style="margin: 0; color: #3A4556; font-size: 15px">Stages, exit criteria and required fields that match how you actually sell.</p>
-</div>
-<div style="flex: 1 1 260px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 24px">
-<h3 style="font-family: Archivo, sans-serif; font-size: 19px; margin: 0 0 8px">Tool stack integration</h3>
-<p style="margin: 0; color: #3A4556; font-size: 15px">Connect your CRM with marketing, billing, ERP and delivery tools around one account record.</p>
-</div>
-<div style="flex: 1 1 260px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 24px">
-<h3 style="font-family: Archivo, sans-serif; font-size: 19px; margin: 0 0 8px">Territory and quota planning</h3>
-<p style="margin: 0; color: #3A4556; font-size: 15px">Territories, quotas and plans for the next year, grounded in capacity and history.</p>
-</div>
-<div style="flex: 1 1 260px; min-width: 0; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px; padding: 24px">
-<h3 style="font-family: Archivo, sans-serif; font-size: 19px; margin: 0 0 8px">Sales playbook and sequences</h3>
-<p style="margin: 0; color: #3A4556; font-size: 15px">Messaging, cadences and plays your reps will actually use.</p>
-</div>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
-<div style="flex: 1 1 240px; min-width: 0; border-top: 3px solid #0F1B2D; padding-top: 18px">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5568; margin-bottom: 6px">STEP 1</div>
-<div style="font-weight: 600; font-size: 18px; margin-bottom: 4px">Scoping call</div>
-<p style="margin: 0; color: #3A4556; font-size: 16px">We agree on the problem, the outcome and what done looks like.</p>
-</div>
-<div style="flex: 1 1 240px; min-width: 0; border-top: 3px solid #0F1B2D; padding-top: 18px">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5568; margin-bottom: 6px">STEP 2</div>
-<div style="font-weight: 600; font-size: 18px; margin-bottom: 4px">Fixed proposal</div>
-<p style="margin: 0; color: #3A4556; font-size: 16px">Scope, deliverables, timeline and fee, in writing, before any work starts.</p>
-</div>
-<div style="flex: 1 1 240px; min-width: 0; border-top: 3px solid #0F1B2D; padding-top: 18px">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5568; margin-bottom: 6px">STEP 3</div>
-<div style="font-weight: 600; font-size: 18px; margin-bottom: 4px">Deliver and hand over</div>
-<p style="margin: 0; color: #3A4556; font-size: 16px">Built, documented and handed to your team, with training where it’s needed.</p>
-</div>
-<div style="flex: 1 1 240px; min-width: 0; display: flex; align-items: flex-end">
-<a href="#contact" style="display: flex; align-items: center; justify-content: center; width: 100%; min-height: 52px; padding: 0 22px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; border-radius: 6px">Scope a project</a>
-</div>
-</div>
-</section>
 
 <!-- To add a photo later: put it in this folder and add <img src="photo.jpg" alt="Sudheer Gentela" style="width: 100%; max-width: 360px; border-radius: 10px; margin-bottom: 32px"> above the ABOUT label. -->
 <section id="about" style="max-width: 1200px; margin: 0 auto; padding: 96px 20px; border-top: 1px solid #DDE2E8">
@@ -501,48 +413,6 @@ input,select,textarea{font:inherit}
 </div>
 </section>
 
-<section id="engagements" style="background: #FFFFFF; border-top: 1px solid #DDE2E8; border-bottom: 1px solid #DDE2E8">
-<div style="max-width: 1200px; margin: 0 auto; padding: 96px 20px">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">ENGAGEMENTS</div>
-<h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 16px; max-width: 760px">Start small. Scale when it’s working.</h2>
-<p style="font-size: 19px; color: #3A4556; margin: 0 0 48px; max-width: 720px">These are broad guidelines, not fixed packages. Every scope can be tailored, including a custom diagnostic focused on the one area that matters most to you.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
-<div style="flex: 1 1 320px; min-width: 0; border: 1px solid #DDE2E8; border-radius: 10px; padding: 32px; display: flex; flex-direction: column">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 10px">STANDARD OR CUSTOM</div>
-<h3 style="font-family: Archivo, sans-serif; font-size: 26px; margin: 0 0 18px">Diagnostic</h3>
-<ul style="margin: 0 0 28px; padding-left: 20px; color: #3A4556; font-size: 16px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
-<li>CRM and data audit</li>
-<li>Lead-to-customer-success funnel review</li>
-<li>Stakeholder interviews across teams</li>
-<li>Prioritized 90-day roadmap</li>
-</ul>
-<a href="#contact" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border: 1px solid #0F1B2D; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 6px">Start with a diagnostic</a>
-</div>
-<div style="flex: 1 1 320px; min-width: 0; border: 2px solid #0F1B2D; border-radius: 10px; padding: 31px; display: flex; flex-direction: column">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 10px">TYPICALLY 60–90 DAYS</div>
-<h3 style="font-family: Archivo, sans-serif; font-size: 26px; margin: 0 0 18px">Build</h3>
-<ul style="margin: 0 0 28px; padding-left: 20px; color: #3A4556; font-size: 16px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
-<li>Implementation of the priority fixes from the CRM and data audit and the funnel review</li>
-<li>Dashboards and a forecast cadence</li>
-<li>Documentation and team training</li>
-</ul>
-<a href="#contact" style="display: flex; align-items: center; justify-content: center; min-height: 48px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; border-radius: 6px">Talk about a build</a>
-</div>
-<div style="flex: 1 1 320px; min-width: 0; border: 1px solid #DDE2E8; border-radius: 10px; padding: 32px; display: flex; flex-direction: column">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 10px">ONGOING</div>
-<h3 style="font-family: Archivo, sans-serif; font-size: 26px; margin: 0 0 18px">Run</h3>
-<ul style="margin: 0 0 28px; padding-left: 20px; color: #3A4556; font-size: 16px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto">
-<li>Your fractional RevOps lead, for an agreed number of hours a week</li>
-<li>Weekly pipeline and forecast reviews</li>
-<li>Quarterly planning and target setting</li>
-<li>Help hiring your in-house RevOps role</li>
-</ul>
-<a href="#contact" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border: 1px solid #0F1B2D; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 6px">Ask about a retainer</a>
-</div>
-</div>
-<p style="margin: 32px 0 0; color: #3A4556; font-size: 16px">Just need one thing done? <a href="#projects" style="font-weight: 600">Project work</a> is scoped and agreed up front, with no retainer.</p>
-</div>
-</section>
 
 <section id="faq" style="max-width: 900px; margin: 0 auto; padding: 96px 20px">
 <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">FAQ</div>
@@ -554,7 +424,7 @@ input,select,textarea{font:inherit}
 </details>
 <details style="border-bottom: 1px solid #DDE2E8">
 <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 0; min-height: 44px; font-weight: 600; font-size: 19px">Can we hire you for just one project?<span class="faq-plus" aria-hidden="true" style="font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 400; transition: transform 0.15s">+</span></summary>
-<p style="margin: 0 0 22px; color: #3A4556">Yes. Project work has a fixed scope, a fixed fee and a clear handover, with no retainer. Typical examples are a CRM migration, a dashboard and forecast build, or territory and quota planning.</p>
+<p style="margin: 0 0 22px; color: #3A4556">Yes. Project work has a fixed scope, a fixed fee and a clear handover, with no retainer. Typical examples are a CRM migration, a dashboard and forecast build, or territory and quota planning. <a href="projects.html" style="font-weight: 600">See project types</a>.</p>
 </details>
 <details style="border-bottom: 1px solid #DDE2E8">
 <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 0; min-height: 44px; font-weight: 600; font-size: 19px">Which CRM and tools do you work with?<span class="faq-plus" aria-hidden="true" style="font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 400; transition: transform 0.15s">+</span></summary>
@@ -658,9 +528,16 @@ input,select,textarea{font:inherit}
 </section>
 
 <footer style="background: #0B1522; color: #A9B4C2; font-size: 14px">
-<div style="max-width: 1200px; margin: 0 auto; padding: 28px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 32px">
 <span>Sudheer Gentela · Fractional RevOps for SaaS, Services and IT companies</span>
-<span><a href="health-check.html" style="color: #E8EDF3">RevOps Health Check</a> · <a href="nda.html" style="color: #E8EDF3">Mutual NDA</a> · © 2026</span>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 8px 20px">
+<a href="engagements.html" style="color: #E8EDF3">Engagements</a>
+<a href="projects.html" style="color: #E8EDF3">Projects</a>
+<a href="what-i-bring.html" style="color: #E8EDF3">What I bring</a>
+<a href="health-check.html" style="color: #E8EDF3">RevOps Health Check</a>
+<a href="nda.html" style="color: #E8EDF3">Mutual NDA</a>
+<span>© 2026</span>
+</nav>
 </div>
 </footer>
 
@@ -731,8 +608,12 @@ input,select,textarea{font:inherit}
 
     groups.forEach(function (g) {
       var gBoxes = Array.prototype.slice.call(g.querySelectorAll('.topic-box'));
-      var all = gBoxes.every(function (b) { return b.checked; });
-      g.querySelector('.svc-all').textContent = all ? 'Clear' : 'Select all';
+      var picked = gBoxes.filter(function (b) { return b.checked; }).length;
+      g.querySelector('.svc-all').textContent = picked === gBoxes.length ? 'Clear' : 'Select all';
+      // Collapsed areas still show that something inside them is ticked.
+      var tag = g.querySelector('.svc-count');
+      tag.hidden = picked === 0;
+      tag.textContent = picked + ' selected';
     });
 
     // The floating bar only appears when the in-section bar and the form are both off screen.
@@ -792,6 +673,15 @@ var SITE = {
   var button = document.getElementById('form-submit');
   var errorEl = document.getElementById('form-error');
 
+  // Buttons on the Engagements and Projects pages link here with ?interest=…
+  // so the form arrives with the right option already chosen.
+  var wanted = new URLSearchParams(window.location.search).get('interest');
+  if (wanted) {
+    Array.prototype.forEach.call(form.elements.interest.options, function (o) {
+      if (o.text.toLowerCase() === wanted.toLowerCase()) form.elements.interest.value = o.value;
+    });
+  }
+
   function showError() {
     errorEl.textContent = SITE.email
       ? 'Sorry, that didn’t go through. Please try again, or email me at ' + SITE.email + '.'
@@ -822,46 +712,6 @@ var SITE = {
         button.disabled = false;
         button.textContent = 'Send';
       });
-  });
-})();
-</script>
-<script>
-(function () {
-  // Header "Services" dropdown. Hover is handled in CSS; this covers click, tap and
-  // keyboard (the button responds to Enter/Space), and closing on Escape, click-away,
-  // choosing a link, or tabbing out.
-  var dd = document.querySelector('.nav-dd');
-  if (!dd) return;
-  var btn = dd.querySelector('.nav-dd-btn');
-
-  function setOpen(open) {
-    dd.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-  // Hover alone would keep the menu showing after it should close, so suppress it
-  // until the pointer leaves.
-  function forceClose() {
-    setOpen(false);
-    dd.classList.add('closing');
-  }
-
-  btn.addEventListener('click', function () {
-    dd.classList.remove('closing');
-    setOpen(!dd.classList.contains('open'));
-  });
-  dd.addEventListener('mouseleave', function () { dd.classList.remove('closing'); });
-  dd.addEventListener('focusout', function (e) {
-    if (!dd.contains(e.relatedTarget)) setOpen(false);
-  });
-  document.addEventListener('click', function (e) { if (!dd.contains(e.target)) setOpen(false); });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && (dd.classList.contains('open') || dd.matches(':hover'))) {
-      forceClose();
-      btn.focus();
-    }
-  });
-  Array.prototype.forEach.call(dd.querySelectorAll('a'), function (a) {
-    a.addEventListener('click', function () { forceClose(); a.blur(); });
   });
 })();
 </script>

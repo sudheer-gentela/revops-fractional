@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What I bring | Sudheer Gentela</title>
+<meta name="description" content="Samples of the scorecard, funnel model, stage definitions, forecast cadence, dashboards and capacity model built in a fractional RevOps engagement.">
+<meta property="og:title" content="What I bring">
+<meta property="og:description" content="Samples of the scorecard, funnel model, stage definitions, forecast cadence, dashboards and capacity model built in a fractional RevOps engagement.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect x='2' y='2' width='24' height='24' rx='4' fill='%230F1B2D'/%3E%3Cpath d='M7 19l5-5 4 3 5-7' fill='none' stroke='%23FDBA74' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root{--accent:#C2410C}
+body{margin:0;background:#F7F8F9}
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+a{color:#0F1B2D}a:hover{color:#9A3412}
+[hidden]{display:none !important}
+@media (max-width: 860px){.nav-links{display:none !important}}
+[id]{scroll-margin-top:88px}
+.label{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.12em;color:#4A5568}
+.kit{display:flex;flex-wrap:wrap;gap:28px 40px;align-items:flex-start;padding:48px 0;border-top:1px solid #DDE2E8}
+.kit-text{flex:1 1 320px;min-width:0}
+.kit-text h2{font-family:Archivo,sans-serif;font-size:26px;line-height:1.2;margin:12px 0 8px}
+.kit-text ul{margin:0 0 18px;padding-left:20px;color:#3A4556;font-size:16px;display:flex;flex-direction:column;gap:6px}
+.sample{flex:1.7 1 480px;min-width:0;margin:0;background:#FFFFFF;border:1px solid #DDE2E8;border-radius:12px;padding:22px 24px}
+.sample-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px;margin-bottom:14px;font-size:16px}
+.sample-sub{margin-left:10px;color:#4A5568;font-size:14px}
+.sample-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#4A5568;background:#F1F4F8;padding:3px 8px;border-radius:999px}
+.scroll{overflow-x:auto}
+.s-table{width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.4}
+.s-table th,.s-table td{padding:9px 10px;border-bottom:1px solid #EDF0F3;text-align:left;vertical-align:middle}
+.s-table thead th{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;font-weight:500;color:#4A5568;text-transform:uppercase;white-space:nowrap}
+.s-table tbody th{font-weight:600;white-space:nowrap}
+.s-table .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.s-table tr.total th,.s-table tr.total td{font-weight:700;border-bottom:0;border-top:2px solid #0F1B2D}
+.meter{height:8px;min-width:60px;background:#EDF0F3;border-radius:4px;overflow:hidden}
+.meter>div{height:8px;border-radius:4px}
+.flag{color:var(--accent);font-weight:600}
+.flag-tag{display:inline-block;margin-left:4px;padding:1px 6px;border-radius:4px;background:#FFF1E8;font-size:11px;font-weight:600}
+.callout{margin:16px 0 0;padding:12px 14px;border-radius:8px;background:#F7F8F9;font-size:15px;color:#1F2A3A}
+.note{margin:12px 0 0;font-size:14px;color:#4A5568}
+.s-list{margin:0;padding-left:20px;font-size:15px;display:flex;flex-direction:column;gap:4px}
+.mins{color:#4A5568;font-size:13px;margin-left:6px}
+.defs{margin:14px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width: 620px){.defs{grid-template-columns:1fr}}
+.defs div{padding:10px 12px;background:#F7F8F9;border-radius:8px;font-size:14px}
+.defs dt{font-weight:700}.defs dd{margin:2px 0 0;color:#3A4556}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.mini-label{font-size:14px;color:#3A4556;margin-bottom:6px}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width: 720px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile{padding:12px 14px;background:#F7F8F9;border-radius:8px}
+.tile-l{font-size:13px;color:#4A5568}.tile-v{font-family:Archivo,sans-serif;font-weight:800;font-size:24px;line-height:1.2}.tile-s{font-size:12.5px;color:#4A5568}
+.hbar{display:grid;grid-template-columns:90px minmax(0,1fr) 64px;align-items:center;gap:12px;padding:5px 0;font-size:14.5px}
+.hbar-v{text-align:right;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chips span{padding:4px 10px;border:1px solid #DDE2E8;border-radius:999px;font-size:13px;color:#3A4556}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0F1B2D; background: #F7F8F9; font-size: 17px; line-height: 1.6; min-width: 0">
+
+<header style="position: sticky; top: 0; z-index: 10; background: rgba(247,248,249,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid #DDE2E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 14px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px">
+<a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #0F1B2D">
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#0F1B2D" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="24" height="24" rx="4"></rect><path d="M7 19l5-5 4 3 5-7"></path></svg>
+<span style="display: flex; flex-direction: column; line-height: 1.15">
+<span style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 18px">Sudheer Gentela</span>
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: #4A5568">FRACTIONAL REVOPS</span>
+</span>
+</a>
+<nav aria-label="Main" class="nav-links" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 26px; font-size: 15px; font-weight: 500">
+<a href="index.html#fit" style="text-decoration: none">Who it’s for</a>
+<a href="index.html#services" style="text-decoration: none">Services</a>
+<a href="index.html#how" style="text-decoration: none">How it works</a>
+<a href="index.html#why" style="text-decoration: none">Why me</a>
+<a href="health-check.html" style="text-decoration: none; color: var(--accent)">RevOps Health Check</a>
+</nav>
+<a href="index.html#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px; border-radius: 6px">Book a call</a>
+</div>
+</header>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 56px 20px 88px">
+<p style="margin: 0 0 24px; font-size: 15px"><a href="index.html#toolkit" style="text-decoration: none; color: #4A5568"><span aria-hidden="true">←</span> Back to home</a></p>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">WHAT YOU GET · WHAT I BRING</div>
+<h1 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(34px, 4.2vw, 52px); line-height: 1.06; letter-spacing: -0.02em; margin: 0 0 16px; max-width: 860px">Operating know-how, not a generic template pack.</h1>
+<p style="font-size: 19px; color: #3A4556; margin: 0 0 40px; max-width: 720px">I bring a working knowledge of the frameworks and models that keep revenue teams running, learned in operating roles. Rather than hand you someone else’s templates, I build each one around how your business sells and delivers. Your team keeps all of it.</p>
+<p class="callout" style="margin: -16px 0 32px; max-width: 760px">Each sample below uses fictional data for an imaginary company, to show the shape of the deliverable. Yours is built from your own data. Downloadable templates are coming soon.</p>
+<section class="kit" id="revops-scorecard" aria-labelledby="h-revops-scorecard">
+<div class="kit-text">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 16px"><path d="M9 11l3 3 8-8"></path><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"></path></svg>
+<h2 id="h-revops-scorecard">RevOps scorecard</h2>
+<p style="margin: 0 0 16px; color: #3A4556">A structured assessment of your data, process, systems and people, scored so you can track progress over time.</p>
+<div class="label" style="margin-bottom: 8px">WHAT’S IN IT</div>
+<ul><li>Scores across data, process, systems and people</li><li>The evidence behind each score</li><li>The top gaps, ranked by revenue impact</li><li>Re-scored after the Build phase to show progress</li></ul>
+<div style="font-size: 14px; color: #4A5568"><span class="label">BUILT DURING</span>&nbsp; Diagnose</div>
+</div>
+<figure class="sample">
+<figcaption class="sample-head"><span><strong>RevOps scorecard</strong><span class="sample-sub">Overall 2.7 / 5</span></span><span class="sample-tag">SAMPLE · FICTIONAL DATA</span></figcaption>
+<div class="scroll"><table class="s-table">
+<thead><tr><th scope="col">Dimension</th><th scope="col" class="num">Score</th><th scope="col"><span class="visually-hidden">Score bar</span></th><th scope="col">What we found</th></tr></thead>
+<tbody><tr><th scope="row">Data</th><td class="num">2.1</td><td style="width: 34%"><div class="meter" role="img" aria-label="Data: 2.1 out of 5" title="Data: 2.1 out of 5"><div style="width: 42%; background: #0F1B2D"></div></div></td><td>31% of open deals are missing a close date or amount</td></tr><tr><th scope="row">Process</th><td class="num">2.6</td><td style="width: 34%"><div class="meter" role="img" aria-label="Process: 2.6 out of 5" title="Process: 2.6 out of 5"><div style="width: 52%; background: #0F1B2D"></div></div></td><td>Stages mean different things to different teams</td></tr><tr><th scope="row">Systems</th><td class="num">3.2</td><td style="width: 34%"><div class="meter" role="img" aria-label="Systems: 3.2 out of 5" title="Systems: 3.2 out of 5"><div style="width: 64%; background: #0F1B2D"></div></div></td><td>CRM and billing aren’t linked; renewals live in a spreadsheet</td></tr><tr><th scope="row">People</th><td class="num">2.8</td><td style="width: 34%"><div class="meter" role="img" aria-label="People: 2.8 out of 5" title="People: 2.8 out of 5"><div style="width: 56%; background: #0F1B2D"></div></div></td><td>No weekly forecast call; deals are inspected ad hoc</td></tr></tbody></table></div>
+<div class="label" style="margin: 18px 0 8px">TOP GAPS, BY REVENUE IMPACT</div>
+<ol class="s-list"><li>Lead response: 9 days from MQL to first touch</li><li>No written exit criteria for any stage</li><li>Renewals tracked outside the CRM</li></ol>
+</figure>
+</section>
+<section class="kit" id="lead-to-cs-funnel-model" aria-labelledby="h-lead-to-cs-funnel-model">
+<div class="kit-text">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 16px"><path d="M3 4h18l-7 8v6l-4 2v-8z"></path></svg>
+<h2 id="h-lead-to-cs-funnel-model">Lead-to-CS funnel model</h2>
+<p style="margin: 0 0 16px; color: #3A4556">Stage-by-stage conversion and velocity, from first lead through to customer success, set up for how your company sells.</p>
+<div class="label" style="margin-bottom: 8px">WHAT’S IN IT</div>
+<ul><li>Conversion and time in stage, from first lead to renewal</li><li>Where leads and deals stall or drop out</li><li>Cuts by source, segment and region</li><li>Baselines from your own history, so targets are realistic</li></ul>
+<div style="font-size: 14px; color: #4A5568"><span class="label">BUILT DURING</span>&nbsp; Diagnose, refreshed during Run</div>
+</div>
+<figure class="sample">
+<figcaption class="sample-head"><span><strong>Lead-to-customer funnel</strong><span class="sample-sub">Last two quarters</span></span><span class="sample-tag">SAMPLE · FICTIONAL DATA</span></figcaption>
+<div class="scroll"><table class="s-table">
+<thead><tr><th scope="col">Stage</th><th scope="col" class="num">Count</th><th scope="col"><span class="visually-hidden">Volume bar</span></th><th scope="col" class="num">Conversion</th><th scope="col" class="num">Days to next</th></tr></thead>
+<tbody><tr><th scope="row">Lead</th><td class="num">2,400</td><td style="width: 34%"><div class="meter" role="img" aria-label="Lead: 2,400" title="Lead: 2,400"><div style="width: 100.0%; background: #0F1B2D"></div></div></td><td class="num">—</td><td class="num">6</td></tr><tr><th scope="row">MQL</th><td class="num">720</td><td style="width: 34%"><div class="meter" role="img" aria-label="MQL: 720" title="MQL: 720"><div style="width: 30.0%; background: #0F1B2D"></div></div></td><td class="num">30%</td><td class="num">9</td></tr><tr><th scope="row">SQL</th><td class="num">288</td><td style="width: 34%"><div class="meter" role="img" aria-label="SQL: 288" title="SQL: 288"><div style="width: 12.0%; background: #0F1B2D"></div></div></td><td class="num"><span class="flag">40% <span class="flag-tag">Key leak</span></span></td><td class="num">4</td></tr><tr><th scope="row">Opportunity</th><td class="num">173</td><td style="width: 34%"><div class="meter" role="img" aria-label="Opportunity: 173" title="Opportunity: 173"><div style="width: 7.2%; background: #0F1B2D"></div></div></td><td class="num">60%</td><td class="num">49</td></tr><tr><th scope="row">Won</th><td class="num">38</td><td style="width: 34%"><div class="meter" role="img" aria-label="Won: 38" title="Won: 38"><div style="width: 1.6%; background: #0F1B2D"></div></div></td><td class="num">22%</td><td class="num">—</td></tr></tbody></table></div>
+<p class="callout"><strong>Where it leaks:</strong> 60% of marketing-qualified leads never become sales-qualified, and first touch takes 9 days. These are leads you’ve already paid to qualify, so fixing lead response is worth more than adding new ones.</p>
+</figure>
+</section>
+<section class="kit" id="stage-definitions-and-field-standards" aria-labelledby="h-stage-definitions-and-field-standards">
+<div class="kit-text">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 16px"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h10"></path></svg>
+<h2 id="h-stage-definitions-and-field-standards">Stage definitions and field standards</h2>
+<p style="margin: 0 0 16px; color: #3A4556">Stages, exit criteria and field rules written down for your revenue model, so every team works the same way.</p>
+<div class="label" style="margin-bottom: 8px">WHAT’S IN IT</div>
+<ul><li>Entry and exit criteria for every stage</li><li>Shared definitions of MQL, SQL, pipeline and bookings</li><li>Required fields, and who owns each one</li><li>A one-page reference for the team</li></ul>
+<div style="font-size: 14px; color: #4A5568"><span class="label">BUILT DURING</span>&nbsp; Build</div>
+</div>
+<figure class="sample">
+<figcaption class="sample-head"><span><strong>Stage definitions</strong><span class="sample-sub">B2B services sales process</span></span><span class="sample-tag">SAMPLE · FICTIONAL DATA</span></figcaption>
+<div class="scroll"><table class="s-table">
+<thead><tr><th scope="col">Stage</th><th scope="col">Exit criteria (to move on)</th><th scope="col">Required fields</th></tr></thead>
+<tbody><tr><th scope="row">1. Qualify</th><td>Budget range and timeline confirmed with a named buyer</td><td>Use case, buyer role</td></tr><tr><th scope="row">2. Discover</th><td>Pain and success criteria agreed in writing</td><td>Decision process, competitors</td></tr><tr><th scope="row">3. Propose</th><td>Proposal walked through live with the decision-maker</td><td>Amount, close date</td></tr><tr><th scope="row">4. Negotiate</th><td>Verbal yes, and the buyer’s paper process has started</td><td>Signer, signing date</td></tr></tbody></table></div>
+<p class="note">Entry to each stage is the exit from the one before.</p>
+<dl class="defs"><div><dt>MQL</dt><dd>Fits the target profile and showed buying intent: a demo request, pricing-page visit or event meeting.</dd></div><div><dt>SQL</dt><dd>A seller has spoken to them and confirmed a real need and a buyer.</dd></div></dl>
+</figure>
+</section>
+<section class="kit" id="forecast-cadence" aria-labelledby="h-forecast-cadence">
+<div class="kit-text">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 16px"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M3 9h18"></path><path d="M8 2v4"></path><path d="M16 2v4"></path></svg>
+<h2 id="h-forecast-cadence">Forecast cadence</h2>
+<p style="margin: 0 0 16px; color: #3A4556">Forecast categories, roll-ups and a meeting agenda your leadership can run every week.</p>
+<div class="label" style="margin-bottom: 8px">WHAT’S IN IT</div>
+<ul><li>Forecast categories: commit, best case and pipeline</li><li>Roll-up from rep to manager to leadership</li><li>A weekly forecast call agenda</li><li>Forecast-versus-actual tracking</li></ul>
+<div style="font-size: 14px; color: #4A5568"><span class="label">BUILT DURING</span>&nbsp; Build, then run weekly</div>
+</div>
+<figure class="sample">
+<figcaption class="sample-head"><span><strong>Weekly forecast roll-up</strong><span class="sample-sub">Week 9 of 13 · $K</span></span><span class="sample-tag">SAMPLE · FICTIONAL DATA</span></figcaption>
+<div class="scroll"><table class="s-table">
+<thead><tr><th scope="col">Owner</th><th scope="col" class="num">Commit</th><th scope="col" class="num">Best case</th><th scope="col" class="num">Pipeline</th><th scope="col" class="num">Quota</th></tr></thead>
+<tbody><tr><th scope="row">Rep A</th><td class="num">120</td><td class="num">180</td><td class="num">410</td><td class="num">200</td></tr><tr><th scope="row">Rep B</th><td class="num">90</td><td class="num">150</td><td class="num">360</td><td class="num">200</td></tr><tr><th scope="row">Rep C</th><td class="num">60</td><td class="num">140</td><td class="num">300</td><td class="num">200</td></tr><tr class="total"><th scope="row">Team</th><td class="num">270</td><td class="num">470</td><td class="num">1,070</td><td class="num">600</td></tr></tbody></table></div>
+<div class="pair">
+<div><div class="mini-label">Commit vs quota <strong>45%</strong></div><div class="meter" role="img" aria-label="Commit is 45% of quota" title="Commit is 45% of quota"><div style="width: 45%; background: #0F1B2D"></div></div></div>
+<div><div class="mini-label">Best case vs quota <strong>78%</strong></div><div class="meter" role="img" aria-label="Best case is 78% of quota" title="Best case is 78% of quota"><div style="width: 78%; background: #0F1B2D"></div></div></div>
+</div>
+<div class="label" style="margin: 18px 0 8px">WEEKLY FORECAST CALL · 30 MIN</div>
+<ol class="s-list"><li>What changed since last week <span class="mins">10 min</span></li><li>Commit deals at risk <span class="mins">10 min</span></li><li>Upside we can pull in <span class="mins">5 min</span></li><li>Actions and owners <span class="mins">5 min</span></li></ol>
+<p class="note">Commit includes $230K already closed. Last quarter: called $540K, closed $512K (95% accuracy).</p>
+</figure>
+</section>
+<section class="kit" id="dashboards" aria-labelledby="h-dashboards">
+<div class="kit-text">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 16px"><path d="M4 20V10"></path><path d="M10 20V4"></path><path d="M16 20v-7"></path><path d="M22 20H2"></path></svg>
+<h2 id="h-dashboards">Dashboards</h2>
+<p style="margin: 0 0 16px; color: #3A4556">Leadership, pipeline and rep-level dashboards, built in your CRM or BI tool.</p>
+<div class="label" style="margin-bottom: 8px">WHAT’S IN IT</div>
+<ul><li>Leadership view: pipeline coverage, bookings and forecast</li><li>Pipeline view: stage movement, ageing and slippage</li><li>Rep view: activity, pipeline and conversion</li><li>Built in your CRM or BI tool, not a separate system</li></ul>
+<div style="font-size: 14px; color: #4A5568"><span class="label">BUILT DURING</span>&nbsp; Build</div>
+</div>
+<figure class="sample">
+<figcaption class="sample-head"><span><strong>Leadership dashboard</strong><span class="sample-sub">Quarter to date</span></span><span class="sample-tag">SAMPLE · FICTIONAL DATA</span></figcaption>
+<div class="tiles">
+<div class="tile"><div class="tile-l">Bookings QTD</div><div class="tile-v">$230K</div><div class="tile-s">38% of $600K target</div></div>
+<div class="tile"><div class="tile-l">Pipeline coverage</div><div class="tile-v">2.9×</div><div class="tile-s">Open pipeline vs remaining target</div></div>
+<div class="tile"><div class="tile-l">Win rate</div><div class="tile-v">22%</div><div class="tile-s">Last two quarters</div></div>
+<div class="tile"><div class="tile-l">Sales cycle</div><div class="tile-v">68 days</div><div class="tile-s">Lead to won, average</div></div>
+</div>
+<div class="label" style="margin: 20px 0 10px">OPEN PIPELINE BY STAGE · $1,070K</div>
+<div class="hbar"><span class="hbar-l">Qualify</span><span class="hbar-t"><div class="meter" role="img" aria-label="Qualify: $380K" title="Qualify: $380K"><div style="width: 100%; background: #0F1B2D"></div></div></span><span class="hbar-v">$380K</span></div><div class="hbar"><span class="hbar-l">Discover</span><span class="hbar-t"><div class="meter" role="img" aria-label="Discover: $300K" title="Discover: $300K"><div style="width: 79%; background: #0F1B2D"></div></div></span><span class="hbar-v">$300K</span></div><div class="hbar"><span class="hbar-l">Propose</span><span class="hbar-t"><div class="meter" role="img" aria-label="Propose: $240K" title="Propose: $240K"><div style="width: 63%; background: #0F1B2D"></div></div></span><span class="hbar-v">$240K</span></div><div class="hbar"><span class="hbar-l">Negotiate</span><span class="hbar-t"><div class="meter" role="img" aria-label="Negotiate: $150K" title="Negotiate: $150K"><div style="width: 39%; background: #0F1B2D"></div></div></span><span class="hbar-v">$150K</span></div>
+</figure>
+</section>
+<section class="kit" id="capacity-and-quota-model" aria-labelledby="h-capacity-and-quota-model">
+<div class="kit-text">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F1B2D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-bottom: 16px"><rect x="4" y="2" width="16" height="20" rx="2"></rect><path d="M8 6h8"></path><path d="M8 11h2"></path><path d="M14 11h2"></path><path d="M8 15h2"></path><path d="M14 15h2"></path></svg>
+<h2 id="h-capacity-and-quota-model">Capacity and quota model</h2>
+<p style="margin: 0 0 16px; color: #3A4556">Quotas, territories and plans tested against real capacity before you roll them out.</p>
+<div class="label" style="margin-bottom: 8px">WHAT’S IN IT</div>
+<ul><li>Rep capacity and ramp assumptions</li><li>Quota and territory scenarios</li><li>A hiring plan against the revenue target</li><li>Checked against actuals each quarter</li></ul>
+<div style="font-size: 14px; color: #4A5568"><span class="label">BUILT DURING</span>&nbsp; Build, or as a standalone project</div>
+</div>
+<figure class="sample">
+<figcaption class="sample-head"><span><strong>Capacity and quota model</strong><span class="sample-sub">Next year · $M</span></span><span class="sample-tag">SAMPLE · FICTIONAL DATA</span></figcaption>
+<div class="chips"><span>Target $4.8M</span><span>Quota per rep $800K</span><span>Attainment 75%</span><span>Ramp: 0%, then 50%, then full</span><span>Team today: 5 reps</span></div>
+<div class="scroll"><table class="s-table">
+<thead><tr><th scope="col">Quarter</th><th scope="col" class="num">Target</th><th scope="col" class="num">Current team</th><th scope="col" class="num">With 5 hires in Q1</th></tr></thead>
+<tbody><tr><th scope="row">Q1</th><td class="num">1.20</td><td class="num">0.75</td><td class="num">0.75</td></tr><tr><th scope="row">Q2</th><td class="num">1.20</td><td class="num">0.75</td><td class="num">1.13</td></tr><tr><th scope="row">Q3</th><td class="num">1.20</td><td class="num">0.75</td><td class="num">1.50</td></tr><tr><th scope="row">Q4</th><td class="num">1.20</td><td class="num">0.75</td><td class="num">1.50</td></tr><tr class="total"><th scope="row">Year</th><td class="num">4.80</td><td class="num">3.00</td><td class="num">4.88</td></tr></tbody></table></div>
+<p class="callout"><strong>What it shows:</strong> five Q1 hires close the annual gap, but the first half still runs $0.53M short, so quarterly targets need phasing.</p>
+</figure>
+</section>
+<div style="margin-top: 16px"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; padding: 28px; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px">
+<div style="flex: 0 1 280px; font-weight: 600; font-size: 16px; line-height: 1.4">Tool-agnostic. I work in the stack you already have.</div>
+<div style="flex: 1 1 520px; display: flex; flex-wrap: wrap; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #3A4556">
+<span style="padding: 6px 12px; border: 1px solid #DDE2E8; border-radius: 999px">Salesforce</span>
+<span style="padding: 6px 12px; border: 1px solid #DDE2E8; border-radius: 999px">HubSpot</span>
+<span style="padding: 6px 12px; border: 1px solid #DDE2E8; border-radius: 999px">Zoho CRM</span>
+<span style="padding: 6px 12px; border: 1px solid #DDE2E8; border-radius: 999px">Outreach / Apollo</span>
+<span style="padding: 6px 12px; border: 1px solid #DDE2E8; border-radius: 999px">NetSuite / QuickBooks</span>
+<span style="padding: 6px 12px; border: 1px solid #DDE2E8; border-radius: 999px">Power BI / Looker / Looker Studio</span>
+</div>
+</div></div>
+<div style="margin-top: 40px; padding: 24px 28px; border-radius: 12px; background: #FFFFFF; border: 1px solid #DDE2E8; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
+<span style="font-size: 18px; font-weight: 600">Want to see how these would look for your business?</span>
+<a href="index.html#contact" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #FFFFFF; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 6px; border: 1px solid #0F1B2D">Book a call<span aria-hidden="true" style="margin-left: 8px">→</span></a>
+</div>
+</main>
+
+<footer style="background: #0B1522; color: #A9B4C2; font-size: 14px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 32px">
+<span>Sudheer Gentela · Fractional RevOps for SaaS, Services and IT companies</span>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 8px 20px">
+<a href="services.html" style="color: #E8EDF3">Services</a>
+<a href="engagements.html" style="color: #E8EDF3">Engagements</a>
+<a href="projects.html" style="color: #E8EDF3">Projects</a>
+<a href="what-i-bring.html" style="color: #E8EDF3">What I bring</a>
+<a href="health-check.html" style="color: #E8EDF3">RevOps Health Check</a>
+<a href="nda.html" style="color: #E8EDF3">Mutual NDA</a>
+<span>© 2026</span>
+</nav>
+</div>
+</footer>
+
+</div>
+
+</body>
+</html>

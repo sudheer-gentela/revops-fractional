@@ -26,33 +26,29 @@ input,select,textarea{font:inherit}
 @media (max-width: 860px){.nav-links{display:none !important}}
 /* Anchor jumps land below the sticky header instead of under it. */
 [id]{scroll-margin-top:88px}
-/* Services: six areas as an accordion; topics are real checkboxes so they work with keyboard and screen readers. */
-.svc-list{border:1px solid #24344A;border-radius:10px;overflow:hidden}
-.svc + .svc{border-top:1px solid #24344A}
-.svc-sum{display:flex;align-items:center;gap:20px;padding:20px 24px;min-height:44px}
-.svc-sum:hover,.svc[open] .svc-sum{background:#13233A}
-.svc-sum:focus-visible{outline:2px solid #FDBA74;outline-offset:-2px}
-.svc-num{flex:0 0 28px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#FDBA74}
-.svc-main{flex:1 1 auto;min-width:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 18px}
-.svc-title{font-family:Archivo,sans-serif;font-size:21px;font-weight:700;line-height:1.25;color:#FFFFFF}
-.svc-line{color:#A9B4C2;font-size:16px}
-.svc-count{flex:0 0 auto;padding:3px 10px;border-radius:999px;background:#FDBA74;color:#0F1B2D;font-size:12px;font-weight:600;white-space:nowrap}
-.svc-chev{flex:0 0 auto;color:#A9B4C2;transition:transform 0.15s}
-.svc[open] .svc-chev{transform:rotate(180deg)}
-.svc-body{padding:4px 24px 24px 72px;background:#13233A}
-.svc-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 32px;margin-bottom:14px}
-@media (max-width: 720px){.svc-sum{gap:14px;padding:18px}.svc-body{padding:4px 18px 20px}.svc-topics{grid-template-columns:1fr}}
-.svc-all{min-height:44px;padding:0 14px;background:transparent;color:#E8EDF3;border:1px solid #3A4D66;border-radius:6px;font:inherit;font-size:13px;cursor:pointer}
-.svc-all:hover{border-color:#A9B4C2}
 .phase-pill{display:inline-flex;align-items:center;min-height:32px;padding:4px 12px;border:1px solid #C5CDD8;border-radius:999px;background:#FFFFFF;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#0F1B2D}
-.topic{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;margin:0 -12px;border-radius:6px;cursor:pointer;color:#C9D2DD;font-size:15.5px;line-height:1.45}
-.topic:hover{background:#16263B}
-.topic:has(input:checked){background:#1C2F48;color:#FFFFFF}
-.topic input{width:18px;height:18px;margin:2px 0 0;flex:0 0 auto;accent-color:#FDBA74}
 .chip{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:4px 6px 4px 12px;background:#F1F4F8;border:1px solid #DDE2E8;border-radius:999px;font:inherit;font-size:13px;font-weight:500;color:#0F1B2D;cursor:pointer;text-align:left}
 .chip:hover{border-color:#0F1B2D}
 .chip-x{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:999px;background:#DDE2E8;font-size:14px;line-height:1}
-.topic-float{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:20;display:flex;align-items:center;gap:16px;max-width:calc(100% - 32px);padding:8px 8px 8px 20px;background:#0F1B2D;color:#FFFFFF;border:1px solid #3A4D66;border-radius:999px;box-shadow:0 10px 30px rgba(15,27,45,0.28);font-weight:600;font-size:15px}
+/* Services summary: six areas link to their detail on services.html. */
+.svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#24344A;border:1px solid #24344A;border-radius:10px;overflow:hidden}
+@media (max-width: 960px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width: 620px){.svc-grid{grid-template-columns:1fr}}
+.svc-card{display:flex;flex-direction:column;gap:6px;padding:26px 28px;background:#0F1B2D;color:#E8EDF3;text-decoration:none}
+.svc-card:hover{background:#13233A;color:#E8EDF3}
+.svc-card:focus-visible{outline:2px solid #FDBA74;outline-offset:-2px}
+.svc-n{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#FDBA74}
+.svc-t{font-family:Archivo,sans-serif;font-size:20px;font-weight:700;line-height:1.25;color:#FFFFFF}
+.svc-d{font-size:15.5px;color:#A9B4C2}
+/* Problem fix-it form */
+.fix-band{margin-top:32px;padding:24px 28px;border-radius:12px;background:#0F1B2D;color:#E8EDF3;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
+#fix-toggle[aria-expanded="true"] .fix-chev{display:inline-block;transform:rotate(180deg)}
+.fix-panel{margin-top:16px;padding:28px;background:#FFFFFF;border:1px solid #DDE2E8;border-radius:12px}
+.fix-opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (max-width: 720px){.fix-opts{grid-template-columns:1fr}}
+.fix-opt{display:flex;gap:12px;align-items:flex-start;min-height:44px;padding:12px 14px;border:1px solid #DDE2E8;border-radius:8px;background:#F7F8F9;cursor:pointer;font-size:16px}
+.fix-opt:has(input:checked){border-color:#0F1B2D;background:#F1F4F8}
+.fix-opt input{width:18px;height:18px;margin:3px 0 0;flex:0 0 auto;accent-color:var(--accent)}
 </style>
 </head>
 <body>
@@ -71,7 +67,7 @@ input,select,textarea{font:inherit}
 <a href="#fit" style="text-decoration: none">Who it’s for</a>
 <a href="#services" style="text-decoration: none">Services</a>
 <a href="#how" style="text-decoration: none">How it works</a>
-<a href="#about" style="text-decoration: none">About</a>
+<a href="#why" style="text-decoration: none">Why me</a>
 <a href="health-check.html" style="text-decoration: none; color: var(--accent)">RevOps Health Check</a>
 </nav>
 <a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px; border-radius: 6px">Book a call</a>
@@ -94,7 +90,7 @@ input,select,textarea{font:inherit}
 </div>
 </section>
 
-<section style="max-width: 1200px; margin: 0 auto; padding: 96px 20px; border-top: 1px solid #DDE2E8">
+<section id="problems" style="max-width: 1200px; margin: 0 auto; padding: 96px 20px; border-top: 1px solid #DDE2E8">
 <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">THE PROBLEM</div>
 <h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 48px; max-width: 760px">Sound familiar?</h2>
 <div style="display: flex; flex-wrap: wrap; gap: 20px">
@@ -128,6 +124,51 @@ input,select,textarea{font:inherit}
 <h3 style="font-family: Archivo, sans-serif; font-size: 22px; margin: 0 0 8px">The founder is still RevOps.</h3>
 <p style="margin: 0; color: #3A4556">Process lives in one person’s head and breaks the moment they get busy.</p>
 </div>
+</div>
+
+<!-- One form under the problems: tick one or more, or describe something else. -->
+<div class="fix-band">
+<div style="flex: 1 1 420px; min-width: 0">
+<div style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 24px; color: #FFFFFF; margin-bottom: 4px">Recognise any of these?</div>
+<div style="color: #A9B4C2">Tick the ones you’re facing, or tell me about something else, and I’ll come back with how I’d fix them.</div>
+</div>
+<button type="button" id="fix-toggle" aria-expanded="false" aria-controls="fix-panel" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #FFFFFF; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 6px; border: 1px solid #0F1B2D; border: 0; font-size: 16px; cursor: pointer">Fix this for me<span aria-hidden="true" class="fix-chev" style="margin-left: 8px">▾</span></button>
+</div>
+<div id="fix-panel" class="fix-panel" hidden>
+<form id="fix-form" novalidate>
+<div id="fix-fields">
+<fieldset style="border: 0; margin: 0 0 20px; padding: 0">
+<legend style="font-weight: 600; font-size: 16px; margin-bottom: 12px; padding: 0">Which of these should we fix? <span style="font-weight: 400; color: #4A5568">Tick all that apply.</span></legend>
+<div class="fix-opts">
+<label class="fix-opt"><input type="checkbox" name="problem" value="The forecast is a guess"><span>The forecast is a guess</span></label>
+<label class="fix-opt"><input type="checkbox" name="problem" value="The CRM is a graveyard"><span>The CRM is a graveyard</span></label>
+<label class="fix-opt"><input type="checkbox" name="problem" value="Leads go cold in the gaps"><span>Leads go cold in the gaps</span></label>
+<label class="fix-opt"><input type="checkbox" name="problem" value="The tools don’t talk"><span>The tools don’t talk</span></label>
+<label class="fix-opt"><input type="checkbox" name="problem" value="Numbers don’t drive decisions"><span>Numbers don’t drive decisions</span></label>
+<label class="fix-opt"><input type="checkbox" name="problem" value="The founder is still RevOps"><span>The founder is still RevOps</span></label>
+<label class="fix-opt"><input type="checkbox" name="problem-other" id="fix-other-box"><span>Something else</span></label>
+</div>
+<label id="fix-other-wrap" hidden style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; margin-top: 12px">What else is going on?
+<input type="text" name="other" maxlength="500" style="min-height: 46px; padding: 0 12px; border: 1px solid #C5CDD8; border-radius: 6px; font-weight: 400; background: #FFFFFF">
+</label>
+</fieldset>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; flex: 1 1 220px">Name<input type="text" name="name" required autocomplete="name" style="min-height: 46px; padding: 0 12px; border: 1px solid #C5CDD8; border-radius: 6px; font-weight: 400; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; flex: 1 1 220px">Work email<input type="email" name="email" required autocomplete="email" style="min-height: 46px; padding: 0 12px; border: 1px solid #C5CDD8; border-radius: 6px; font-weight: 400; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; flex: 1 1 220px">Company<input type="text" name="company" autocomplete="organization" style="min-height: 46px; padding: 0 12px; border: 1px solid #C5CDD8; border-radius: 6px; font-weight: 400; background: #FFFFFF"></label>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; margin-bottom: 16px"><span>Anything I should know? <span style="font-weight: 400; color: #4A5568">Optional</span></span>
+<textarea name="message" rows="3" style="padding: 10px 12px; border: 1px solid #C5CDD8; border-radius: 6px; font-weight: 400; resize: vertical"></textarea>
+</label>
+<div aria-hidden="true" style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<p id="fix-error" role="alert" hidden style="margin: 0 0 16px; padding: 12px 14px; border-radius: 6px; background: #FEF2F2; color: #991B1B; font-size: 15px"></p>
+<button type="submit" id="fix-submit" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; border-radius: 6px; border: 0; font-size: 16px; cursor: pointer">Send</button>
+</div>
+<div id="fix-sent" hidden>
+<div style="font-family: Archivo, sans-serif; font-weight: 800; font-size: 26px; margin-bottom: 8px">Thanks, got it.</div>
+<p style="margin: 0; color: #3A4556">I’ll come back shortly with how I’d approach it. A confirmation is on its way to your inbox.</p>
+</div>
+</form>
 </div>
 </section>
 
@@ -191,89 +232,74 @@ input,select,textarea{font:inherit}
 
 <section id="services" style="background: #0F1B2D; color: #E8EDF3">
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px 20px">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: #FDBA74; font-weight: 500; margin-bottom: 14px">SERVICES</div>
-<h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 16px; color: #FFFFFF; max-width: 760px">What I take ownership of.</h2>
-<p style="font-size: 19px; color: #A9B4C2; margin: 0 0 40px; max-width: 720px">Six areas, scoped to your stage. Open any area to see what’s covered, and tick the topics you’d like to talk about.</p>
-<div class="svc-list">
-<details class="svc" data-cat="Strategy and planning">
-<summary class="svc-sum"><span class="svc-num">01</span><span class="svc-main"><span class="svc-title">Strategy and planning</span><span class="svc-line">Revenue plans, quotas, capacity and territories</span></span><span class="svc-count" hidden></span><svg class="svc-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7"></path></svg></summary>
-<div class="svc-body">
-<div class="svc-topics">
-<label class="topic"><input type="checkbox" class="topic-box"><span>Annual and quarterly revenue planning, done with Finance and the CRO</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Quota setting and sales capacity planning: how many reps you need, and how fast they ramp</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Territory and account segmentation by industry, size or region, and who owns which accounts</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Go-to-market design: which segments get field sales, inside sales or a self-serve motion</span></label>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: #FDBA74; font-weight: 500; margin-bottom: 14px">WHAT YOU GET · SERVICES</div>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 40px; margin-bottom: 40px">
+<div style="flex: 1 1 520px; min-width: 0">
+<h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 16px; color: #FFFFFF">What I take ownership of.</h2>
+<p style="font-size: 19px; color: #A9B4C2; margin: 0; max-width: 680px">Six areas, scoped to your stage. You rarely need all six at once.</p>
 </div>
-<button type="button" class="svc-all">Select all</button>
+<a href="services.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #FFFFFF; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 6px; border: 1px solid #0F1B2D; border: 0">See everything I cover<span aria-hidden="true" style="margin-left: 8px">→</span></a>
 </div>
-</details>
-<details class="svc" data-cat="Forecasting and pipeline management">
-<summary class="svc-sum"><span class="svc-num">02</span><span class="svc-main"><span class="svc-title">Forecasting and pipeline management</span><span class="svc-line">A forecast and pipeline reviews leadership can trust</span></span><span class="svc-count" hidden></span><svg class="svc-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7"></path></svg></summary>
-<div class="svc-body">
-<div class="svc-topics">
-<label class="topic"><input type="checkbox" class="topic-box"><span>Forecast methodology and the weekly forecast call</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Pipeline reviews, stage definitions and exit criteria</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Deal desk: pricing approvals, discount governance and non-standard terms</span></label>
+<div class="svc-grid">
+<a class="svc-card" href="services.html#strategy-and-planning">
+<span class="svc-n">01</span>
+<span class="svc-t">Strategy and planning</span>
+<span class="svc-d">Revenue plans, quotas, capacity and territories</span>
+</a>
+<a class="svc-card" href="services.html#forecasting-and-pipeline-management">
+<span class="svc-n">02</span>
+<span class="svc-t">Forecasting and pipeline management</span>
+<span class="svc-d">A forecast and pipeline reviews leadership can trust</span>
+</a>
+<a class="svc-card" href="services.html#process-design">
+<span class="svc-n">03</span>
+<span class="svc-t">Process design</span>
+<span class="svc-d">How leads become customers, without leaks between teams</span>
+</a>
+<a class="svc-card" href="services.html#systems-and-tech-stack">
+<span class="svc-n">04</span>
+<span class="svc-t">Systems and tech stack</span>
+<span class="svc-d">Your CRM and the tools around it, working together</span>
+</a>
+<a class="svc-card" href="services.html#data-quality-and-governance">
+<span class="svc-n">05</span>
+<span class="svc-t">Data quality and governance</span>
+<span class="svc-d">Clean data, and clear rules on which system wins</span>
+</a>
+<a class="svc-card" href="services.html#reporting-and-analytics">
+<span class="svc-n">06</span>
+<span class="svc-t">Reporting and analytics</span>
+<span class="svc-d">Dashboards and metrics everyone works from</span>
+</a>
 </div>
-<button type="button" class="svc-all">Select all</button>
 </div>
-</details>
-<details class="svc" data-cat="Process design">
-<summary class="svc-sum"><span class="svc-num">03</span><span class="svc-main"><span class="svc-title">Process design</span><span class="svc-line">How leads become customers, without leaks between teams</span></span><span class="svc-count" hidden></span><svg class="svc-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7"></path></svg></summary>
-<div class="svc-body">
-<div class="svc-topics">
-<label class="topic"><input type="checkbox" class="topic-box"><span>Lead-to-cash flow: capture, routing, qualification, opportunity, quote, contract, booking and handoff to CS</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Lead routing and assignment rules, response SLAs and round-robin logic</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Lead scoring and the definitions of MQL and SQL</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Handoffs between SDR and AE, and between AE and CS or onboarding</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Renewal and expansion process with Customer Success</span></label>
+</section>
+
+<section id="how" style="background: #FFFFFF; border-top: 1px solid #DDE2E8; border-bottom: 1px solid #DDE2E8">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 20px">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">WHAT YOU GET · HOW IT WORKS</div>
+<h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 16px; max-width: 760px">Two ways to work together.</h2>
+<p style="font-size: 19px; color: #3A4556; margin: 0 0 40px; max-width: 680px">Pick the one that fits where you are today.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; border: 2px solid #0F1B2D; border-radius: 12px; padding: 32px; background: #F7F8F9">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 10px">ONGOING · A FEW MONTHS</div>
+<h3 style="font-family: Archivo, sans-serif; font-size: 28px; line-height: 1.15; margin: 0 0 12px">Ongoing engagement</h3>
+<p style="margin: 0 0 24px; color: #3A4556">I act as your RevOps lead over a few months: diagnose what’s broken, fix the foundations, then run it with your team.</p>
+<div aria-label="Three phases" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 28px; flex: 1 1 auto; align-content: flex-start">
+<span class="phase-pill">01 Diagnose</span><span aria-hidden="true" style="color: #4A5568">→</span><span class="phase-pill">02 Build</span><span aria-hidden="true" style="color: #4A5568">→</span><span class="phase-pill">03 Run</span>
 </div>
-<button type="button" class="svc-all">Select all</button>
+<a href="engagements.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; border-radius: 6px; align-self: flex-start">How engagements work<span aria-hidden="true" style="margin-left: 8px">→</span></a>
 </div>
-</details>
-<details class="svc" data-cat="Systems and tech stack">
-<summary class="svc-sum"><span class="svc-num">04</span><span class="svc-main"><span class="svc-title">Systems and tech stack</span><span class="svc-line">Your CRM and the tools around it, working together</span></span><span class="svc-count" hidden></span><svg class="svc-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7"></path></svg></summary>
-<div class="svc-body">
-<div class="svc-topics">
-<label class="topic"><input type="checkbox" class="topic-box"><span>CRM ownership: schema, fields, page layouts, permissions and automations</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>The surrounding tools: marketing automation, sales engagement, CPQ, conversation intelligence, enrichment, forecasting and BI</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Integrations between those tools, tool evaluation and purchasing, and license management</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Setting up and governing AI agents that enrich records, route leads and draft outreach</span></label>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; border: 1px solid #DDE2E8; border-radius: 12px; padding: 33px; background: #F7F8F9">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 10px">ONE-OFF · FIXED SCOPE</div>
+<h3 style="font-family: Archivo, sans-serif; font-size: 28px; line-height: 1.15; margin: 0 0 12px">A specific project</h3>
+<p style="margin: 0 0 24px; color: #3A4556">One problem, a fixed scope and a clear handover. No retainer.</p>
+<div style="margin-bottom: 28px; flex: 1 1 auto">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 8px">FOR EXAMPLE</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span class="phase-pill">CRM migration</span><span class="phase-pill">Lead routing</span><span class="phase-pill">Forecast and dashboards</span><span class="phase-pill">Territory planning</span></div>
 </div>
-<button type="button" class="svc-all">Select all</button>
+<a href="projects.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; border-radius: 6px; align-self: flex-start">See project types<span aria-hidden="true" style="margin-left: 8px">→</span></a>
 </div>
-</details>
-<details class="svc" data-cat="Data quality and governance">
-<summary class="svc-sum"><span class="svc-num">05</span><span class="svc-main"><span class="svc-title">Data quality and governance</span><span class="svc-line">Clean data, and clear rules on which system wins</span></span><span class="svc-count" hidden></span><svg class="svc-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7"></path></svg></summary>
-<div class="svc-body">
-<div class="svc-topics">
-<label class="topic"><input type="checkbox" class="topic-box"><span>Deduplication, enrichment and field standards</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Account hierarchies and parent/child relationships</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Data decay control and system-of-record rules: which system wins when two disagree</span></label>
-</div>
-<button type="button" class="svc-all">Select all</button>
-</div>
-</details>
-<details class="svc" data-cat="Reporting and analytics">
-<summary class="svc-sum"><span class="svc-num">06</span><span class="svc-main"><span class="svc-title">Reporting and analytics</span><span class="svc-line">Dashboards and metrics everyone works from</span></span><span class="svc-count" hidden></span><svg class="svc-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7"></path></svg></summary>
-<div class="svc-body">
-<div class="svc-topics">
-<label class="topic"><input type="checkbox" class="topic-box"><span>Dashboards for leadership and for each team</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Core metrics: pipeline coverage, win rate, sales cycle length, average deal size, CAC, LTV, NRR/GRR, churn and payback period</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Funnel conversion analysis and marketing attribution</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Rep productivity and activity analysis</span></label>
-<label class="topic"><input type="checkbox" class="topic-box"><span>Board-level metrics, prepared with Finance</span></label>
-</div>
-<button type="button" class="svc-all">Select all</button>
-</div>
-</details>
-</div>
-<div style="margin-top: 24px; padding: 18px 20px 18px 24px; border: 1px solid #3A4D66; border-radius: 10px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px">
-<span id="topic-count" aria-live="polite" style="font-weight: 600; color: #FFFFFF">No topics selected yet.</span>
-<span style="display: flex; flex-wrap: wrap; gap: 10px">
-<button type="button" id="topic-clear" hidden style="min-height: 48px; padding: 0 18px; background: transparent; color: #E8EDF3; border: 1px solid #3A4D66; border-radius: 6px; font: inherit; font-size: 15px; cursor: pointer">Clear</button>
-<a href="#contact" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; background: #FFFFFF; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 6px">Talk about these</a>
-</span>
 </div>
 </div>
 </section>
@@ -281,11 +307,11 @@ input,select,textarea{font:inherit}
 <section id="toolkit" style="max-width: 1200px; margin: 0 auto; padding: 80px 20px">
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px; margin-bottom: 36px">
 <div style="flex: 1 1 560px; min-width: 0">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">WHAT I BRING</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">WHAT YOU GET · WHAT I BRING</div>
 <h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 16px; max-width: 820px">Operating know-how, not a generic template pack.</h2>
-<p style="font-size: 19px; color: #3A4556; margin: 0; max-width: 720px">From a RevOps scorecard to forecast cadence and dashboards, each one built around how your business sells and delivers. Your team keeps all of it.</p>
+<p style="font-size: 19px; color: #3A4556; margin: 0; max-width: 720px">From a RevOps scorecard to forecast cadence and dashboards, each one built around how your business sells and delivers. See a sample of each, and keep all of yours.</p>
 </div>
-<a href="what-i-bring.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #FFFFFF; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 6px; border: 1px solid #0F1B2D">See what you keep<span aria-hidden="true" style="margin-left: 8px">→</span></a>
+<a href="what-i-bring.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #FFFFFF; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 6px; border: 1px solid #0F1B2D">See the samples<span aria-hidden="true" style="margin-left: 8px">→</span></a>
 </div>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; padding: 28px; background: #FFFFFF; border: 1px solid #DDE2E8; border-radius: 10px">
 <div style="flex: 0 1 280px; font-weight: 600; font-size: 16px; line-height: 1.4">Tool-agnostic. I work in the stack you already have.</div>
@@ -300,8 +326,8 @@ input,select,textarea{font:inherit}
 </div>
 </section>
 
-<section style="max-width: 1200px; margin: 0 auto; padding: 96px 20px; border-top: 1px solid #DDE2E8">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">WHY FRACTIONAL</div>
+<section id="why" style="max-width: 1200px; margin: 0 auto; padding: 96px 20px; border-top: 1px solid #DDE2E8">
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">WHY ME · WHY FRACTIONAL</div>
 <h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 40px; max-width: 820px">Senior judgement now. A full-time hire when you’re ready.</h2>
 <div style="overflow-x: auto; border: 1px solid #DDE2E8; border-radius: 10px; background: #FFFFFF">
 <table style="width: 100%; min-width: 760px; border-collapse: collapse; font-size: 16px">
@@ -355,40 +381,11 @@ input,select,textarea{font:inherit}
 </div>
 </section>
 
-<section id="how" style="background: #FFFFFF; border-top: 1px solid #DDE2E8; border-bottom: 1px solid #DDE2E8">
-<div style="max-width: 1200px; margin: 0 auto; padding: 88px 20px">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">HOW IT WORKS</div>
-<h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 16px; max-width: 760px">Two ways to work together.</h2>
-<p style="font-size: 19px; color: #3A4556; margin: 0 0 40px; max-width: 680px">Pick the one that fits where you are today.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
-<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; border: 2px solid #0F1B2D; border-radius: 12px; padding: 32px; background: #F7F8F9">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 10px">ONGOING · A FEW MONTHS</div>
-<h3 style="font-family: Archivo, sans-serif; font-size: 28px; line-height: 1.15; margin: 0 0 12px">Ongoing engagement</h3>
-<p style="margin: 0 0 24px; color: #3A4556">I act as your RevOps lead over a few months: diagnose what’s broken, fix the foundations, then run it with your team.</p>
-<div aria-label="Three phases" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 28px; flex: 1 1 auto; align-content: flex-start">
-<span class="phase-pill">01 Diagnose</span><span aria-hidden="true" style="color: #4A5568">→</span><span class="phase-pill">02 Build</span><span aria-hidden="true" style="color: #4A5568">→</span><span class="phase-pill">03 Run</span>
-</div>
-<a href="engagements.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; border-radius: 6px; align-self: flex-start">How engagements work<span aria-hidden="true" style="margin-left: 8px">→</span></a>
-</div>
-<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; border: 1px solid #DDE2E8; border-radius: 12px; padding: 33px; background: #F7F8F9">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 10px">ONE-OFF · FIXED SCOPE</div>
-<h3 style="font-family: Archivo, sans-serif; font-size: 28px; line-height: 1.15; margin: 0 0 12px">A specific project</h3>
-<p style="margin: 0 0 24px; color: #3A4556">One problem, a fixed scope and a clear handover. No retainer.</p>
-<div style="margin-bottom: 28px; flex: 1 1 auto">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #4A5568; margin-bottom: 8px">FOR EXAMPLE</div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px"><span class="phase-pill">CRM migration</span><span class="phase-pill">Lead routing</span><span class="phase-pill">Forecast and dashboards</span><span class="phase-pill">Territory planning</span></div>
-</div>
-<a href="projects.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; border-radius: 6px; align-self: flex-start">See project types<span aria-hidden="true" style="margin-left: 8px">→</span></a>
-</div>
-</div>
-</div>
-</section>
-
 
 <!-- To add a photo later: put it in this folder and add <img src="photo.jpg" alt="Sudheer Gentela" style="width: 100%; max-width: 360px; border-radius: 10px; margin-bottom: 32px"> above the ABOUT label. -->
 <section id="about" style="max-width: 1200px; margin: 0 auto; padding: 96px 20px; border-top: 1px solid #DDE2E8">
 <div style="max-width: 900px">
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">ABOUT</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--accent); font-weight: 500; margin-bottom: 14px">WHY ME · ABOUT</div>
 <h2 style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 24px">An operator, not a slide-deck consultant.</h2>
 <p style="font-size: 19px; color: #3A4556; margin: 0 0 18px">I’ve built and sold companies, and held VP-level roles inside both a B2B SaaS business and an IT services firm. That’s the same mix of revenue models I work with now, so the systems I put in place are built for how your teams actually sell and deliver.</p>
 <p style="font-size: 19px; color: #3A4556; margin: 0 0 36px">I work hands-on in your tools, with your team, and I leave behind documented processes your people own.</p>
@@ -506,7 +503,7 @@ input,select,textarea{font:inherit}
 <div>
 <div id="form-topics-label" style="font-size: 14px; font-weight: 600; margin-bottom: 8px">Topics to discuss</div>
 <div id="form-topics" role="list" aria-labelledby="form-topics-label" style="display: flex; flex-wrap: wrap; gap: 6px"></div>
-<p id="form-topics-empty" style="margin: 0; font-size: 14px; color: #4A5568">None picked yet. <a href="#services" style="font-weight: 600">Choose from the services menu</a>, or describe it below.</p>
+<p id="form-topics-empty" style="margin: 0; font-size: 14px; color: #4A5568">None picked yet. <a href="services.html" style="font-weight: 600">Choose from the services list</a>, or describe it below.</p>
 <input type="hidden" name="topics" id="form-topics-input">
 </div>
 <label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600">What’s the biggest revenue headache right now?
@@ -531,6 +528,7 @@ input,select,textarea{font:inherit}
 <div style="max-width: 1200px; margin: 0 auto; padding: 32px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 32px">
 <span>Sudheer Gentela · Fractional RevOps for SaaS, Services and IT companies</span>
 <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 8px 20px">
+<a href="services.html" style="color: #E8EDF3">Services</a>
 <a href="engagements.html" style="color: #E8EDF3">Engagements</a>
 <a href="projects.html" style="color: #E8EDF3">Projects</a>
 <a href="what-i-bring.html" style="color: #E8EDF3">What I bring</a>
@@ -543,109 +541,108 @@ input,select,textarea{font:inherit}
 
 </div>
 
-<div id="topic-float" class="topic-float" hidden>
-<span id="topic-float-count"></span>
-<a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; background: #FFFFFF; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 999px; white-space: nowrap">Talk about these</a>
-</div>
 
 <script>
 (function () {
-  // Services menu → contact form. Ticked topics show as chips in the form and
-  // are sent in the hidden "topics" field, so you see what they picked.
-  var boxes = Array.prototype.slice.call(document.querySelectorAll('.topic-box'));
-  var countEl = document.getElementById('topic-count');
-  var clearBtn = document.getElementById('topic-clear');
-  var floatBar = document.getElementById('topic-float');
-  var floatCount = document.getElementById('topic-float-count');
+  // Topics picked on the Services page arrive as ?topics=… and show as removable
+  // chips in the contact form; the hidden "topics" field carries them to the email.
   var chipsEl = document.getElementById('form-topics');
   var emptyEl = document.getElementById('form-topics-empty');
   var hiddenEl = document.getElementById('form-topics-input');
-  var groups = Array.prototype.slice.call(document.querySelectorAll('.svc'));
-  var servicesVisible = false;
-  var contactVisible = false;
-
-  function selected() {
-    return boxes.filter(function (b) { return b.checked; }).map(function (b) {
-      return {
-        box: b,
-        cat: b.closest('.svc').getAttribute('data-cat'),
-        label: b.nextElementSibling.textContent
-      };
-    });
-  }
-
-  function countText(n) {
-    return n === 0 ? 'No topics selected yet.' : n + (n === 1 ? ' topic selected' : ' topics selected');
-  }
+  var raw = new URLSearchParams(window.location.search).get('topics') || '';
+  var topics = raw.split('; ').map(function (t) { return t.trim(); }).filter(Boolean).slice(0, 40);
 
   function render() {
-    var picks = selected();
-    var n = picks.length;
-    countEl.textContent = countText(n);
-    floatCount.textContent = countText(n);
-    clearBtn.hidden = n === 0;
-    emptyEl.hidden = n > 0;
-    hiddenEl.value = picks.map(function (p) { return p.cat + ': ' + p.label; }).join('; ');
-
+    hiddenEl.value = topics.join('; ').slice(0, 4000);
+    emptyEl.hidden = topics.length > 0;
     chipsEl.textContent = '';
-    picks.forEach(function (p) {
+    topics.forEach(function (t, i) {
       var chip = document.createElement('button');
       chip.type = 'button';
       chip.className = 'chip';
       chip.setAttribute('role', 'listitem');
-      chip.setAttribute('aria-label', 'Remove topic: ' + p.label);
+      chip.setAttribute('aria-label', 'Remove topic: ' + t);
       var text = document.createElement('span');
-      text.textContent = p.label;
+      text.textContent = t;
       var x = document.createElement('span');
       x.className = 'chip-x';
       x.setAttribute('aria-hidden', 'true');
       x.textContent = '×';
       chip.appendChild(text);
       chip.appendChild(x);
-      chip.addEventListener('click', function () { p.box.checked = false; render(); });
+      chip.addEventListener('click', function () { topics.splice(i, 1); render(); });
       chipsEl.appendChild(chip);
     });
-
-    groups.forEach(function (g) {
-      var gBoxes = Array.prototype.slice.call(g.querySelectorAll('.topic-box'));
-      var picked = gBoxes.filter(function (b) { return b.checked; }).length;
-      g.querySelector('.svc-all').textContent = picked === gBoxes.length ? 'Clear' : 'Select all';
-      // Collapsed areas still show that something inside them is ticked.
-      var tag = g.querySelector('.svc-count');
-      tag.hidden = picked === 0;
-      tag.textContent = picked + ' selected';
-    });
-
-    // The floating bar only appears when the in-section bar and the form are both off screen.
-    floatBar.hidden = n === 0 || servicesVisible || contactVisible;
-  }
-
-  boxes.forEach(function (b) { b.addEventListener('change', render); });
-  groups.forEach(function (g) {
-    g.querySelector('.svc-all').addEventListener('click', function () {
-      var gBoxes = Array.prototype.slice.call(g.querySelectorAll('.topic-box'));
-      var all = gBoxes.every(function (b) { return b.checked; });
-      gBoxes.forEach(function (b) { b.checked = !all; });
-      render();
-    });
-  });
-  clearBtn.addEventListener('click', function () {
-    boxes.forEach(function (b) { b.checked = false; });
-    render();
-  });
-
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.target.id === 'services') servicesVisible = e.isIntersecting;
-        if (e.target.id === 'contact') contactVisible = e.isIntersecting;
-      });
-      render();
-    }, { threshold: 0.05 });
-    io.observe(document.getElementById('services'));
-    io.observe(document.getElementById('contact'));
   }
   render();
+})();
+
+(function () {
+  // "Fix this for me": opens the form under the problem cards, sends the ticked
+  // problems (and any "something else") to the same /api/submit endpoint.
+  var toggle = document.getElementById('fix-toggle');
+  var panel = document.getElementById('fix-panel');
+  var form = document.getElementById('fix-form');
+  var otherBox = document.getElementById('fix-other-box');
+  var otherWrap = document.getElementById('fix-other-wrap');
+  var errorEl = document.getElementById('fix-error');
+  var button = document.getElementById('fix-submit');
+
+  toggle.addEventListener('click', function () {
+    var open = panel.hidden;
+    panel.hidden = !open;
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) form.querySelector('input[name="problem"]').focus();
+  });
+  otherBox.addEventListener('change', function () {
+    otherWrap.hidden = !otherBox.checked;
+    if (otherBox.checked) form.elements.other.focus();
+  });
+
+  function fail(msg) { errorEl.textContent = msg; errorEl.hidden = false; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errorEl.hidden = true;
+    var f = form.elements;
+    var picked = Array.prototype.filter.call(form.querySelectorAll('input[name="problem"]'), function (b) { return b.checked; })
+      .map(function (b) { return b.value; });
+    var other = otherBox.checked ? f.other.value.trim() : '';
+    if (!picked.length && !other) return fail(otherBox.checked ? 'Tell me what else is going on.' : 'Tick at least one problem, or choose “Something else”.');
+    if (!f.name.value.trim()) { f.name.focus(); return fail('Please add your name.'); }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())) { f.email.focus(); return fail('Please enter a valid work email.'); }
+
+    button.disabled = true;
+    button.textContent = 'Sending…';
+    fetch('/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        formType: 'problem',
+        problems: picked.join('; '),
+        other: other,
+        name: f.name.value,
+        email: f.email.value,
+        company: f.company.value,
+        message: f.message.value,
+        website: f.website.value
+      })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        document.getElementById('fix-fields').hidden = true;
+        document.getElementById('fix-sent').hidden = false;
+      })
+      .catch(function () {
+        fail(SITE.email
+          ? 'Sorry, that didn’t go through. Please try again, or email me at ' + SITE.email + '.'
+          : 'Sorry, that didn’t go through. Please try again in a minute.');
+      })
+      .then(function () {
+        button.disabled = false;
+        button.textContent = 'Send';
+      });
+  });
 })();
 
 // ── SITE SETTINGS ─────────────────────────────────────────────

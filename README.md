@@ -5,7 +5,6 @@ Static site on Vercel with two serverless functions.
 ```
 index.html          Homepage
 services.html       Services: the six areas in full, with topic picking (served at /services)
-health-check.html   RevOps Health Check (served at /health-check)
 engagements.html    Ongoing engagements: Diagnose, Build, Run (served at /engagements)
 projects.html       Project work: project types and how a project runs (served at /projects)
 what-i-bring.html   What I bring: the six deliverables, each with a sample (served at /what-i-bring)

@@ -68,7 +68,6 @@ input,select,textarea{font:inherit}
 <a href="#services" style="text-decoration: none">Services</a>
 <a href="#how" style="text-decoration: none">How it works</a>
 <a href="#why" style="text-decoration: none">Why me</a>
-<a href="health-check.html" style="text-decoration: none; color: var(--accent)">RevOps Health Check</a>
 </nav>
 <a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px; border-radius: 6px">Book a call</a>
 </div>
@@ -85,7 +84,7 @@ input,select,textarea{font:inherit}
 <p style="font-size: 19px; line-height: 1.55; color: #3A4556; margin: 0 0 28px; max-width: 640px">I help B2B companies build a revenue engine they can actually forecast—with clean pipeline, connected systems, and handoffs that don’t leak. Hands-on, part-time, and built around the tools already in use.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px">
 <a href="#contact" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; background: #0F1B2D; color: #FFFFFF; text-decoration: none; font-weight: 600; border-radius: 6px">Book a 30-minute diagnostic call</a>
-<a href="health-check.html" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; background: #FFFFFF; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 6px; border: 1px solid #C5CDD8">Take the RevOps Health Check</a>
+<a href="#fix" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; background: #FFFFFF; color: #0F1B2D; text-decoration: none; font-weight: 600; border-radius: 6px; border: 1px solid #C5CDD8">Tell me what’s broken</a>
 </div>
 </div>
 </section>
@@ -127,7 +126,7 @@ input,select,textarea{font:inherit}
 </div>
 
 <!-- One form under the problems: tick one or more, or describe something else. -->
-<div class="fix-band">
+<div class="fix-band" id="fix">
 <div style="flex: 1 1 420px; min-width: 0">
 <div style="font-family: Archivo, sans-serif; font-weight: 700; font-size: 24px; color: #FFFFFF; margin-bottom: 4px">Recognise any of these?</div>
 <div style="color: #A9B4C2">Tick the ones you’re facing, or tell me about something else, and I’ll come back with how I’d fix them.</div>
@@ -445,7 +444,7 @@ input,select,textarea{font:inherit}
 </details>
 <details style="border-bottom: 1px solid #DDE2E8">
 <summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 0; min-height: 44px; font-weight: 600; font-size: 19px">How do we get started?<span class="faq-plus" aria-hidden="true" style="font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 400; transition: transform 0.15s">+</span></summary>
-<p style="margin: 0 0 22px; color: #3A4556">Book a 30-minute call. We’ll talk through where revenue is leaking, and if there’s a fit, I’ll send a scoped proposal for a diagnostic or a project. Not sure where to start? Take the <a href="health-check.html" style="font-weight: 600">RevOps Health Check</a> first.</p>
+<p style="margin: 0 0 22px; color: #3A4556">Book a 30-minute call. We’ll talk through where revenue is leaking, and if there’s a fit, I’ll send a scoped proposal for a diagnostic or a project. Not sure where to start? <a href="#fix" style="font-weight: 600">Tick the problems you recognise</a> and I’ll come back with how I’d fix them.</p>
 </details>
 </div>
 </section>
@@ -532,7 +531,6 @@ input,select,textarea{font:inherit}
 <a href="engagements.html" style="color: #E8EDF3">Engagements</a>
 <a href="projects.html" style="color: #E8EDF3">Projects</a>
 <a href="what-i-bring.html" style="color: #E8EDF3">What I bring</a>
-<a href="health-check.html" style="color: #E8EDF3">RevOps Health Check</a>
 <a href="nda.html" style="color: #E8EDF3">Mutual NDA</a>
 <span>© 2026</span>
 </nav>
@@ -588,12 +586,20 @@ input,select,textarea{font:inherit}
   var errorEl = document.getElementById('fix-error');
   var button = document.getElementById('fix-submit');
 
-  toggle.addEventListener('click', function () {
-    var open = panel.hidden;
+  function setOpen(open, focus) {
     panel.hidden = !open;
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (open) form.querySelector('input[name="problem"]').focus();
+    if (open && focus) form.querySelector('input[name="problem"]').focus({ preventScroll: true });
+  }
+  toggle.addEventListener('click', function () { setOpen(panel.hidden, true); });
+
+  // "Tell me what's broken" links (here and on other pages) point at #fix, so arrive with the form open.
+  function openFromHash() { if (window.location.hash === '#fix') setOpen(true, false); }
+  window.addEventListener('hashchange', openFromHash);
+  Array.prototype.forEach.call(document.querySelectorAll('a[href="#fix"]'), function (a) {
+    a.addEventListener('click', function () { setOpen(true, false); });
   });
+  openFromHash();
   otherBox.addEventListener('change', function () {
     otherWrap.hidden = !otherBox.checked;
     if (otherBox.checked) form.elements.other.focus();
